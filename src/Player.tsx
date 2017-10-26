@@ -18,22 +18,22 @@ export class Player extends React.Component {
     render() {
         return <div>
             <div style={{marginLeft:'35%',display: 'flex',flexDirection:'row'}}>
-            <Button text='<<' onclick={()=>alert('123')}/>
+            <Button text='<<' className='button' onclick={()=>alert('123')}/>
             {
                 this.p1.x
                     ?
-                    <Button img="play.png" onclick={()=>this.switch(this.p1)} />
+                    <Button img="play.png" className='button' onclick={()=>this.switch(this.p1)} />
                     :
-                    <Button img="stop.png" onclick={()=>this.switch(this.p1)} />
+                    <Button img="stop.png" className='button' onclick={()=>this.switch(this.p1)} />
             }
-            <Button text='>>' onclick={()=>alert('123')}/>
+            <Button text='>>' className='button' onclick={()=>alert('123')}/>
             <div style={{marginLeft:'60%'}}>
             {
                 this.p2.x
                     ?
-                    <Button img="collect.png" onclick={()=>this.switch(this.p2)} />
+                    <Button img="collect.png" className='buttonO' onclick={()=>this.switch(this.p2)} />
                     :
-                    <Button img="discollect.png" onclick={()=>this.switch(this.p2)} />
+                    <Button img="discollect.png" className='buttonO' onclick={()=>this.switch(this.p2)} />
             }
             </div>
             </div>

@@ -3,12 +3,12 @@ import './index.css';
 
 import {Button} from './Button'
 
-export  const Search =(p:{})=> {
+export  const Search =(p:{placeholder:string })=> {
       
       return (
-        <div>
-          <input ><Button text='🔍' onclick={()=>alert(123)}/></input>
-
+        <div className='search'>
+          <Button text='🔍' className='buttonSearch' onclick={()=>alert(123)}/>
+          <input type="text" placeholder={p.placeholder} />
         </div>
       );
     }

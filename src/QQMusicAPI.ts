@@ -14,21 +14,20 @@ export type Song = {
     albumImageURL: string
 }
 
-export type SongList = Song[]
 
 type SearchCallback = {
     code: number
     data: {
         keyword: string
         song: {
-            list: SongList
+            list: Song[]
         }
     }
 }
 
 const SEARCH_CALLBACK = '___SEARCH_CALLBACK___'
 
-const dic: { [index: string]: (songList: SongList) => void } = Object.create(null)
+const dic: { [index: string]: (songList: Song[]) => void } = Object.create(null)
 
 window[SEARCH_CALLBACK] = (d: SearchCallback) => {
     const keyword = d.data.keyword
@@ -47,10 +46,37 @@ window[SEARCH_CALLBACK] = (d: SearchCallback) => {
     }
 }
 
-export const search = (keyword: string, callback: (songList: SongList) => void) => {
+export const search = (keyword: string, callback: (songList: Song[]) => void) => {
     dic[keyword] = callback
     const node = document.createElement('script')
     node.src = `http://c.y.qq.com/soso/fcgi-bin/search_cp?&p=1&n=15&w=${encodeURI(keyword)}&aggr=1&lossless=1&cr=1&jsonpCallback=${SEARCH_CALLBACK}`
     document.body.appendChild(node)
     node.onload = () => document.body.removeChild(node)
+}
+
+
+
+let audio = new Audio()
+audio.loop = true
+let isPlaying = false
+
+
+export const setMusicState = (s: { songURL: string, playing: boolean }) => {
+
+    if (audio.src != s.songURL) {
+        audio.src = s.songURL
+        isPlaying = false
+    }
+
+    if (s.playing) {
+        if (!isPlaying) {
+            isPlaying = true
+            audio.play()
+        }
+    } else {
+        if (isPlaying) {
+            isPlaying = false
+            audio.pause()
+        }
+    }
 }

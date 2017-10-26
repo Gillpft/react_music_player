@@ -2,23 +2,89 @@
   margin: 0;
   padding: 0;
 }
+body{
+  position: relative;
+}
+/*button*/
+.buttonTabbarTrue{
+  height: 42px;
+  width: 120px;
+  font-family: Impact, fantasy;
+  font-size: 25px;
+  border: 0 ;
+  outline: none;
+  margin-left: 20px;
+  border-radius: 15px 15px 0px 0px;
+  background: rgba(128, 128, 128, 0.5);
+  color: white;
+}
+.buttonTabbarFalse{
+  height: 42px;
+  width: 120px;
+  font-family: Impact, fantasy;
+  font-size: 25px;
+  border-radius: 15px 15px 0px 0px;
+  border: 0 ;
+  outline: none;
+  margin-left: 20px;
+  text-shadow: 0 0 0.2em gray, 0 0 0.2em white,
+  0 0 0.2em black;
+  background: rgba(128, 128, 128, 0);
+}
+
+.buttonSearch{
+  height: 30px;
+  width: 30px;
+  border: 0;
+  background: rgba(0, 0, 0, 0);
+  font-size: 30px;
+  outline: none;
+}
+.buttonList{
+  height: 30px;
+  width: 30px;
+  border: 0;
+  background: rgba(0, 0, 0, 0);
+  outline: none;
+}
+
+/*组件*/
+.tabbar{
+  position: absolute;
+  margin-top: 21px;
+  margin-bottom: -8px;
+  margin-left: 300px;
+  width: 100%;
+  height: 41px;
+}
+
+.search{
+  position: absolute;
+  margin-left: 700px;
+  margin-bottom: -8px;
+  display: flex;
+  flex-direction:row;
+}
+/*.search:hover>input{
+  display: block;
+  width: 150;
+}*/
+
+.MusicMuseumTop{
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  margin-top: 50px;
+  border-bottom: 1.5px rgba(128, 128, 128, 0.3) solid;
+}
+
+
 h1{
   font-family: Chalkduster, fantasy;
   width: 400px;
   margin-bottom: 20px;
 }
-.button{
-  height: 42px;
-  width: 120px;
-  font-family: Impact, fantasy;
-  font-size: 25px;
-  text-shadow: 0 0 0.2em gray, 0 0 0.2em white,
-  0 0 0.2em black;
-  border-radius: 15px 15px 0px 0px;
-  border: 0 ;
-  outline: none;
-  margin-left: 20px;
-}
+
 .buttonO{
   background-color: green;
   box-shadow: 0 0 0.8em black, 0 0 0.8em black,
@@ -63,15 +129,10 @@ h1{
 	margin-left: 10px;
 	margin-top: 10px;
 }
-.tabbar{
-  margin-top: 21px;
-  margin-bottom: -8px;
-  width: 100%;
-  height: 41px;
-}
-.MusicMuseumTop{
-  display: flex;
-  flex-direction:row;
-  margin-top: 50px;
-  border-bottom: 2px rgba(128, 128, 128, 0.4) solid;
+input{
+  /*display: none;*/
+  border: 0;
+  border-bottom: 1px solid;
+  font-size: 20px;
+  transition:width 10s linear;
 }
