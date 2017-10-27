@@ -7,25 +7,31 @@ import { ListItem } from './ListItem'
 
 import { search, Song, setMusicState } from './QQMusicAPI'
 
-export class App extends React.Component<{},{text:string,list:object}>{
-    state={
-        text:''
-        list:[]
+export class App extends React.Component<{}, { textSearch: string,listSearch:[],change:()=>void}>{
+    state = {
+        textSearch: '',
+        listSearch:[],
+        change:
     }
-    componentWillMountP{
-        
-        search(){
-
+    componentWillMount(){
+        change(text:string){
+            this.setState({testSearch:text})
+            search(testSearch,listSearch=>{
+                this.setState(listSearch:list)
+            })
         }
+        
     }
-    componentWillUnmount{
+    componentWillUnmount(){
         //
     }
     render() {
-        return this.state.list.map(v=>{
-            <img src='v.albumImageURL'
-        })
 
+        return <div className='songList'>
+            <input type="text" value={this.state.textSearch} onChange={v=>this.state.change(v.target.value)}/>
+            
+            
 
+    </div>
     }
 }
