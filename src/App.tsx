@@ -7,19 +7,19 @@ import { ListItem } from './ListItem'
 
 import { search, Song, setMusicState } from './QQMusicAPI'
 
-export class App extends React.Component<{}, { textSearch: string,listSearch:[],change:()=>void}>{
+export class App extends React.Component<{}, 
+{textSearch: string,listSearch:[],change:()=>void}>{
     state = {
         textSearch: '',
         listSearch:[],
-        change:
+    }
+    change(text:string){
+        this.setState({testSearch:text})
+        search(test,list=>{
+            this.setState(listSearch:list)
+        })
     }
     componentWillMount(){
-        change(text:string){
-            this.setState({testSearch:text})
-            search(testSearch,listSearch=>{
-                this.setState(listSearch:list)
-            })
-        }
         
     }
     componentWillUnmount(){
@@ -28,10 +28,8 @@ export class App extends React.Component<{}, { textSearch: string,listSearch:[],
     render() {
 
         return <div className='songList'>
-            <input type="text" value={this.state.textSearch} onChange={v=>this.state.change(v.target.value)}/>
-            
-            
-
+            <input type="text" value={this.state.textSearch} 
+            onChange={v=>this.state.change(v.target.value)}/>
     </div>
     }
 }
