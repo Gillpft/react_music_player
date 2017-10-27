@@ -7,9 +7,24 @@ import { ListItem } from './ListItem'
 
 import { search, Song, setMusicState } from './QQMusicAPI'
 
-export class App extends React.Component{
+export class App extends React.Component<{},{text:string,list:object}>{
+    state={
+        text:''
+        list:[]
+    }
+    componentWillMountP{
+        
+        search(){
+
+        }
+    }
+    componentWillUnmount{
+        //
+    }
     render() {
-        return "hello"
+        return this.state.list.map(v=>{
+            <img src='v.albumImageURL'
+        })
 
 
     }
