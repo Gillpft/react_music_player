@@ -2,8 +2,8 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
 
-import {App} from './App'
+import { APP } from './APP'
 import './index.css';
 
-ReactDOM.render(<App />,document.getElementById('root') as HTMLElement
-)
+
+ReactDOM.render(<APP />, document.getElementById('root'))

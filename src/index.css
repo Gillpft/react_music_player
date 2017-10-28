@@ -41,11 +41,12 @@ body{
   outline: none;
 }
 .buttonList{
-  height: 30px;
-  width: 30px;
+  height: 40px;
+  width: 40px;
   border: 0;
   background: rgba(0, 0, 0, 0);
   outline: none;
+  margin-left: 10px;
 }
 
 /*组件*/
@@ -94,9 +95,9 @@ h1{
   outline: none;
 }
 
-.img{
-  width: 45px;
-  height: 45px;
+.buttonImg{
+  width: 25px;
+  height: 25px;
   border-radius: 50% 50% 50% 50%;  
 }
 .container {
@@ -117,17 +118,20 @@ h1{
   border-radius:8px;
 }
 /*songList*/
-.songList{
-	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+.song{
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: row;
 }
-.songimgList{
-	float: left;
-	margin-top: 10px;
+.songimg{
+  float: left;
+  border-radius: 8px;
 }
-.songTextList{
-	float: left;
+.songText{
+  float: left;
+  width: 150px;
 	text-align: left;
-	margin-left: 10px;
+	margin-left: 100px;
 	margin-top: 10px;
 }
 input{

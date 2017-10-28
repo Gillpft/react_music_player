@@ -7,7 +7,7 @@ export const Button = (p: { text?: string, img?: string, className?:string, marg
   }
   if (p.img != null) {
     return <button className={p.className} onClick={p.onclick}>
-      <img className='img' src={p.img} ></img>
+      <img className='buttonImg' src={p.img} ></img>
     </button>
   }
   if (p.margin != null) {

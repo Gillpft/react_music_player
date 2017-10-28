@@ -3,26 +3,25 @@ import './index.css';
 
 import { Button } from './Button'
 
-export const ListItem = (p: { img: string, songName: string, singer: string, onClick: () => void }) => {
+export const ListItem = (p: { img: string, songName: string, singer: string, onClickPlay: () => void, isPlay: boolean,  onClickCollect: () => void, isCollect: boolean, }) => {
 
   return (
     <div>
-      <div className='songList' onClick={p.onClick} >
+      <div className='song'  >
 
-        <img className='songimgList' width="50" height="50" src={p.img} />
-        <div className='songTextList'>
+        <img className='songimg' width="50" height="50" src={p.img} />
+        <div className='songText'>
           {p.songName}
-          <br />
+        </div>
+        <div className='songText'>
           {p.singer}
         </div>
 
-        <Button img='discollect.png' className='buttonList' onclick={() => { alert(123) }} />
+        <Button img={p.isPlay ? 'stop.png' : 'play.png'} className='buttonList' onclick={p.onClickPlay} />
 
-        <br />
-        <br />
-        <br />
-        <br />
+        <Button img={p.isCollect?'collect.png':'discollect.png'} className='buttonList' onclick={p.onClickCollect} />
+
       </div>
     </div>
-  );
+  )
 }
