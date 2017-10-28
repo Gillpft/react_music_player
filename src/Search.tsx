@@ -60,7 +60,7 @@ export class Search extends React.Component<{}, typeof S>{
 
     render() {
         return <div >
-            <Tabbar boolean={true} />
+            <Tabbar boolean={true} value='周杰伦' search={()=>this.change(this.state.textSearch)}/>
             <div className='songList'>
                 <Button text='<' onclick={() => 123} />
                 <input type="text" value={this.state.textSearch}

@@ -4,14 +4,14 @@ import './index.css';
 import { Button } from './Button'
 import { SearchBox } from './SearchBox'
 
-export const Tabbar = (p: { boolean?: boolean, search?: () => void }) => {
+export const Tabbar = (p: { boolean?: boolean, value:string,search: () => void }) => {
 
   return (
     <div className='tabbar'>
-      <h1>🎵 PFT Music</h1>
-      <SearchBox placeholder='周杰伦' search={() => p.search()} />
+      <div className='PFTMusic'>🎵 PFT Music</div>
       <Button text='音乐馆' className='buttonTabbarTrue' onclick={() => !p.boolean} />
       <Button text='我的音乐' className='buttonTabbarFalse' onclick={() => !p.boolean} />
+      <SearchBox placeholder='   周杰伦' value={p.value} marginLeft={200} search={() => p.search()} />
     </div>
 
   );
