@@ -60,7 +60,7 @@ window[SEARCH_CALLBACK] = (d: SearchCallback) => {
 export const search = (keyword: string, callback: (songList: Song[]) => void) => {
     dic[keyword] = callback
     const node = document.createElement('script')
-    node.src = `http://c.y.qq.com/soso/fcgi-bin/search_cp?&p=1&n=15&w=${encodeURI(keyword)}&aggr=1&lossless=1&cr=1&jsonpCallback=${SEARCH_CALLBACK}`
+    node.src = `http://c.y.qq.com/soso/fcgi-bin/search_cp?&p=1&n=50&w=${encodeURI(keyword)}&aggr=1&lossless=1&cr=1&jsonpCallback=${SEARCH_CALLBACK}`
     document.body.appendChild(node)
     node.onload = () => document.body.removeChild(node)
 }

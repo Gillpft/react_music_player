@@ -50,7 +50,7 @@ export class Lrc extends React.Component<{}, { lrc: string }> {
 
 
     render() {
-        return <h1>{this.state.lrc}</h1>
+        return <h1 style={{color:'#cc66ff'}}>{this.state.lrc}</h1>
     }
 
 }
