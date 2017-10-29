@@ -10,8 +10,17 @@ export type Song = {
     songname: string
 
     //ext
-    songURL: string
     albumImageURL: string
+}
+
+let lrcArr = { xxx: [] as { time: number, lrc: string }[] }
+
+
+let div = document.createElement('div')
+
+const html = (str: string) => {
+    div.innerHTML = str
+    return div.innerText
 }
 
 
@@ -35,8 +44,9 @@ window[SEARCH_CALLBACK] = (d: SearchCallback) => {
     const list = d.data.song.list
 
     list.forEach(v => {
-        v.singerName = v.singer[0].name
-        v.songURL = `http://ws.stream.qqmusic.qq.com/${v.songid}.m4a?fromtag=46`
+        v.songname = html(v.songname)
+        v.singerName = html(v.singer.map(v => v.name).join(' '))
+        v.albumname = html(v.albumname)
         v.albumImageURL = `http://imgcache.qq.com/music/photo/album_300/${v.albumid % 100}/300_albumpic_${v.albumid}_0.jpg`
     })
 
@@ -45,6 +55,7 @@ window[SEARCH_CALLBACK] = (d: SearchCallback) => {
         delete dic[keyword]
     }
 }
+
 
 export const search = (keyword: string, callback: (songList: Song[]) => void) => {
     dic[keyword] = callback
@@ -56,16 +67,53 @@ export const search = (keyword: string, callback: (songList: Song[]) => void) =>
 
 
 
+//!!!!!!!!!!!!!!!
+const LRC_CALLBACK = '___LRC_CALLBACK___'
+let lrcCALLBACK = (f: any) => { }
+
+window[LRC_CALLBACK] = (d: any) => {
+    try {
+        let lrc = html(d.lyric)
+        let arr = lrc.match(/\[\d\d:\d\d.\d\d\].+/g)
+        let objArr = arr.map(v => {
+            let a = Number(v.slice(1, 3))
+            let b = Number(v.slice(4, 6))
+            let c = Number(v.slice(7, 9))
+            let time = a * 60 * 100 + b * 100 + c
+            let lrc = v.slice(10)
+            return { time, lrc }
+        })
+        lrcArr.xxx = objArr
+    } catch (e) {
+
+    }
+}
+
+const searchLRC = (songid: number) => {
+    const node = document.createElement('script')
+    node.src = `https://c.y.qq.com/lyric/fcgi-bin/fcg_query_lyric.fcg?nobase64=1&musicid=${songid}&callback=jsonp1&g_tk=5381&jsonpCallback=${LRC_CALLBACK}&loginUin=0&hostUin=0&format=jsonp1&inCharset=utf8&outCharset=utf-8&notice=0&platform=yqq&needNewCode=0`
+    document.body.appendChild(node)
+    node.onload = () => document.body.removeChild(node)
+    lrcArr.xxx = []
+}
+
+
+
+
 let audio = new Audio()
 audio.loop = true
 let isPlaying = false
 
+export const getCurrentTime = () => audio.currentTime
+export const getDuration = () => audio.duration
+export const getLrc = () => lrcArr.xxx
 
-export const setMusicState = (s: { songURL: string, playing: boolean }) => {
+export const setMusicState = (s: { songid: number, playing: boolean }) => {
 
-    if (audio.src != s.songURL) {
-        audio.src = s.songURL
+    if (audio.src != `http://ws.stream.qqmusic.qq.com/${s.songid}.m4a?fromtag=46`) {
+        audio.src = `http://ws.stream.qqmusic.qq.com/${s.songid}.m4a?fromtag=46`
         isPlaying = false
+        searchLRC(s.songid)
     }
 
     if (s.playing) {

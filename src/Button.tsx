@@ -1,7 +1,7 @@
 import * as React from 'react'
 import './index.css'
 
-export const Button = (p: { text?: string, img?: string, className?:string, margin?: number,  onclick: () => void }) => {
+export const Button = (p: { text?: string, img?: string, className?:string, margin?: number,  onclick?: () => void }) => {
   if (p.text != null) {
     return <button className={p.className} onClick={p.onclick}>{p.text}</button>
   }

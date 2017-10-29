@@ -2,7 +2,6 @@ import * as React from 'react';
 import './index.css';
 
 import { Tabbar } from './Tabbar'
-import { SearchBox } from './SearchBox'
 import { ListItem } from './ListItem'
 import { Button } from './Button'
 
@@ -15,6 +14,8 @@ const S = {
     nowPlayID: -1, //当前播放的歌曲id
     collectIDs: [] as number[],//收藏的歌曲id 数组
 }
+
+import { Lrc } from './Lrc'
 
 export class Search extends React.Component<{}, typeof S>{
 
@@ -29,11 +30,15 @@ export class Search extends React.Component<{}, typeof S>{
         })
     }
 
+
     play(song: Song) {
-        setMusicState({ songURL: song.songURL, playing: true })
+
+
+        setMusicState({ songid: song.songid, playing: true })
         this.setState({
             nowPlayID: song.songid
         })
+
     }
 
     collect(song: Song) {
@@ -60,12 +65,20 @@ export class Search extends React.Component<{}, typeof S>{
 
     render() {
         return <div >
-            <Tabbar boolean={true} value='周杰伦' search={()=>this.change(this.state.textSearch)}/>
+            <Tabbar boolean={true} value={this.state.textSearch} onChange={v => this.change(v)} />
             <div className='songList'>
-                <Button text='<' onclick={() => 123} />
-                <input type="text" value={this.state.textSearch}
-                    onChange={v => this.change(v.target.value)} />
-
+                <div className='searchTop'>
+                    <div className='searchTopBox'>
+                        <Lrc />
+                        <input className='searchTopInput' placeholder='周杰伦' type="text" value={this.state.textSearch}
+                            onChange={v => this.change(v.target.value)} />
+                        <Button text='🔍' className='buttonSearch' />
+                    </div>
+                </div>
+                <div className='songTop'>
+                    <h6>歌名</h6>
+                    <h6>歌名</h6>
+                </div>
                 {this.state.listSearch.map((v, index) =>
 
                     <ListItem

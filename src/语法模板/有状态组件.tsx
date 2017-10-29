@@ -23,6 +23,10 @@ export class HelloWorld extends React.Component<P, typeof S> {
         this.state = S
     }
 
+    componentWillUnmount(){
+        
+    }
+
 
     //
     render() {
