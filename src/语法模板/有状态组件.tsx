@@ -20,11 +20,11 @@ export class HelloWorld extends React.Component<P, typeof S> {
 
 
     componentWillMount() {
-        this.state = S
+        this.setState(S)
     }
 
-    componentWillUnmount(){
-        
+    componentWillUnmount() {
+
     }
 
 

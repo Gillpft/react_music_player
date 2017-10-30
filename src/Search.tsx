@@ -8,6 +8,8 @@ import { AudioBeat } from './AudioBeat'
 
 import { search, Song, setMusicState } from './QQMusicAPI'
 
+import { like, dic } from './gobal'
+
 const S = {
     textSearch: '',
     listSearch: [] as Song[],
@@ -19,7 +21,7 @@ const S = {
 
 import { Lrc } from './Lrc'
 
-export class Search extends React.Component<{}, typeof S>{
+export class Search extends React.Component<{ myMusic: () => void, search: () => void }, typeof S>{
 
     change(text: string) {
         this.setState({
@@ -28,11 +30,13 @@ export class Search extends React.Component<{}, typeof S>{
 
         search(text, list => {
             this.setState({ listSearch: list })
+            dic.searchList = list
         })
+
+
     }
 
     play(song: Song) {
-
 
         setMusicState({ songid: song.songid, playing: true })
         this.setState({
@@ -52,11 +56,16 @@ export class Search extends React.Component<{}, typeof S>{
             this.setState({
                 collectIDs: [...this.state.collectIDs, song.songid]
             })
+            like(song)
         }
     }
 
     componentWillMount() {
-        this.state = S
+        this.setState({
+            ...S,
+            listSearch: dic.searchList,
+            collectIDs: dic.myCollect.map(v => v.songid)
+        })
     }
 
     getCollect(song: Song) {
@@ -65,12 +74,21 @@ export class Search extends React.Component<{}, typeof S>{
 
     render() {
         return <div >
-            <Tabbar boolean={true} value={this.state.textSearch} onChange={v => this.change(v)} />
+            <Tabbar
+                changPage1={() => this.props.search()}
+                changPage2={() => this.props.myMusic()}
+                value={this.state.textSearch}
+                onChange={v => this.change(v)}
+                backgroundColor1='rgba(128, 128, 128, 0.5)'
+                backgroundColor2='rgba(128, 128, 128, 0)' />
             <div className='songList'>
                 <div className='searchTop'>
                     <AudioBeat />
                     <div className='searchTopBox'>
-                        <input className='searchTopInput' placeholder='请输入搜索内容' type="text" value={this.state.textSearch}
+                        <input
+                            className='searchTopInput'
+                            placeholder='请输入搜索内容'
+                            type="text" value={this.state.textSearch}
                             onChange={v => this.change(v.target.value)} />
                     </div>
                 </div>

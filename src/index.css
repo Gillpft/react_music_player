@@ -32,8 +32,9 @@ body{
   outline: none;
   margin-left: 400px;
   border-radius: 15px 15px 0px 0px;
-  background: rgba(128, 128, 128, 0.5);
-  color: white;
+  color:white;
+  text-shadow: 0 0 0.2em gray, 0 0 0.2em white,
+  0 0 0.2em black;
 }
 .buttonTabbarFalse{
   position: absolute;
@@ -45,9 +46,9 @@ body{
   border: 0 ;
   outline: none;
   margin-left: 550px;
+  color:white;
   text-shadow: 0 0 0.2em gray, 0 0 0.2em white,
   0 0 0.2em black;
-  background: rgba(128, 128, 128, 0);
 }
 
 /*组件searchBox*/

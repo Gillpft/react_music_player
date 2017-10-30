@@ -23,8 +23,8 @@ export class APP extends React.Component<{}, typeof S>{
     }
     render() {
         if (this.state.text=='MyMusic')
-        return <MyMusic/>
-        return <Search/>
+        return <MyMusic myMusic={()=>this.changePage('MyMusic')} search={()=>this.changePage('Search')}/>
+        return <Search myMusic={()=>this.changePage('MyMusic')} search={()=>this.changePage('Search')}/>
     }
 
 }
