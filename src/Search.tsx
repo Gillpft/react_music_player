@@ -4,6 +4,7 @@ import './index.css';
 import { Tabbar } from './Tabbar'
 import { ListItem } from './ListItem'
 import { Button } from './Button'
+import { AudioBeat } from './AudioBeat'
 
 import { search, Song, setMusicState } from './QQMusicAPI'
 
@@ -13,6 +14,7 @@ const S = {
 
     nowPlayID: -1, //当前播放的歌曲id
     collectIDs: [] as number[],//收藏的歌曲id 数组
+
 }
 
 import { Lrc } from './Lrc'
@@ -26,10 +28,8 @@ export class Search extends React.Component<{}, typeof S>{
 
         search(text, list => {
             this.setState({ listSearch: list })
-
         })
     }
-
 
     play(song: Song) {
 
@@ -68,16 +68,11 @@ export class Search extends React.Component<{}, typeof S>{
             <Tabbar boolean={true} value={this.state.textSearch} onChange={v => this.change(v)} />
             <div className='songList'>
                 <div className='searchTop'>
+                    <AudioBeat />
                     <div className='searchTopBox'>
-                        <Lrc />
-                        <input className='searchTopInput' placeholder='周杰伦' type="text" value={this.state.textSearch}
+                        <input className='searchTopInput' placeholder='请输入搜索内容' type="text" value={this.state.textSearch}
                             onChange={v => this.change(v.target.value)} />
-                        <Button text='🔍' className='buttonSearch' />
                     </div>
-                </div>
-                <div className='songTop'>
-                    <h6>歌名</h6>
-                    <h6>歌名</h6>
                 </div>
                 {this.state.listSearch.map((v, index) =>
 

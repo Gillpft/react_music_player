@@ -2,14 +2,13 @@ import * as React from 'react';
 import './index.css';
 
 
-import { ListItem } from './ListItem'
-import { MusicMuseum } from './MusicMuseum'
+import { MyMusic } from './MyMusic'
 import { Search } from './Search'
 
 import { search, Song, setMusicState } from './QQMusicAPI'
 
 const S = {
-    text: 'MusicMuseum',
+    text: 'Search',
 }
 
 export class APP extends React.Component<{}, typeof S>{
@@ -23,11 +22,9 @@ export class APP extends React.Component<{}, typeof S>{
         })
     }
     render() {
-        if (this.state.text == 'MusicMuseum')
-            return <MusicMuseum search={() => this.changePage('Search')}/>
-            if (this.state.text == 'Search')
-            return <Search />
-        return <MusicMuseum search={() => this.changePage('Search')}/>
+        if (this.state.text=='MyMusic')
+        return <MyMusic/>
+        return <Search/>
     }
 
 }

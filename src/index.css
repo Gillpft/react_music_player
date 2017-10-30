@@ -10,29 +10,33 @@ body{
 .tabbar{
   display: flex;
   flex-direction: row;
+  position: relative;
   margin-top: 30px;
   width: 100%;
   height: 60px;
   border-bottom: 1.5px rgba(128, 128, 128, 0.3) solid;
 }
 .PFTMusic{
+  position: absolute;
   font-family: Chalkduster, fantasy;
   font-size: 40px;
   width: 400px;
 }
 .buttonTabbarTrue{
+  position: absolute;
   height: 60px;
   width: 120px;
   font-family: Impact, fantasy;
   font-size: 25px;
   border: 0 ;
   outline: none;
-  margin-left: 20px;
+  margin-left: 400px;
   border-radius: 15px 15px 0px 0px;
   background: rgba(128, 128, 128, 0.5);
   color: white;
 }
 .buttonTabbarFalse{
+  position: absolute;
   height: 60px;
   width: 120px;
   font-family: Impact, fantasy;
@@ -40,7 +44,7 @@ body{
   border-radius: 15px 15px 0px 0px;
   border: 0 ;
   outline: none;
-  margin-left: 20px;
+  margin-left: 550px;
   text-shadow: 0 0 0.2em gray, 0 0 0.2em white,
   0 0 0.2em black;
   background: rgba(128, 128, 128, 0);
@@ -50,6 +54,7 @@ body{
 .searchBox{
   display: flex;
   flex-direction:row;
+  position: absolute;
   height: 30px;
   width: 200px;
   border: 1px rgba(128, 128, 128, 0.3) solid;
@@ -109,16 +114,19 @@ body{
   width: 100%;
   height: 200px;
   background-size: 100% 100%;
-  
+  position: relative;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 .searchTopBox{
+  display: flex;
   position: absolute;
   width: 750px;
   height: 50px;
   background-color: white;
   border-radius: 10px;
-  margin-left:100px;
-  margin-top: 100px;
+  margin-left:200px;
+  margin-top: 60px;
+  
 }
 .searchTopInput{
   width: 600px;
@@ -126,7 +134,7 @@ body{
   background-color: rgba(0, 0, 0, 0);
   border: 0;
   margin-left: 100px;
-  font-size: 30px;
+  font-size: 20px;
   outline: none;
 }
 
@@ -154,3 +162,47 @@ body{
   border-radius:8px;
 }
 
+/*组件 AudioBeat*/
+#container{    
+  position:relative;   
+}    
+
+#container span{    
+  width:5px;    
+  height: 5px;    
+  top:0px;    
+  position:absolute;    
+  background:rgba(0, 0, 0, 0.4);    
+  -webkit-animation: bodong 0.5s infinite  ease;    
+}    
+
+#container span:first-child{    
+  left:0px;    
+  -webkit-animation-delay:.3s;    
+}    
+
+#container span:nth-child(2){    
+  left:7px;    
+  -webkit-animation-delay:.4s;    
+
+}    
+#container span:nth-child(3){    
+  left:14px;    
+   -webkit-animation-delay:.6s;    
+}    
+#container span:nth-child(4){    
+  left:21px;    
+   -webkit-animation-delay:.8s;    
+}    
+#container span:nth-child(5){    
+  left:28px;    
+   -webkit-animation-delay:1s;    
+}    
+
+@-webkit-keyframes bodong{    
+  0%{height:5px; background:bule;}    
+  30%{height:15px; background:bule;}    
+  60%{height:20px; background:bule;}    
+  80%{height:15px; background:bule;}    
+  100%{height:5px; background:bule;}    
+}    

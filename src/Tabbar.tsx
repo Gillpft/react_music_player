@@ -11,7 +11,7 @@ export const Tabbar = (p: { boolean?: boolean, value?: string, onChange?: (v: st
       <div className='PFTMusic'>🎵 PFT Music</div>
       <Button text='音乐馆' className='buttonTabbarTrue' onclick={() => !p.boolean} />
       <Button text='我的音乐' className='buttonTabbarFalse' onclick={() => !p.boolean} />
-      <SearchBox placeholder='周杰伦' value={p.value} marginLeft={200} onChange={v => p.onChange(v)} search={() => p.search()} />
+      <SearchBox placeholder='请输入搜索内容' value={p.value} marginLeft={1000} onChange={v => p.onChange(v)} search={() => p.search()} />
     </div>
 
   );
