@@ -3,7 +3,7 @@ import './index.css';
 
 import { Button } from './Button'
 
-export const ListItem = (p: { img: string, songName: string, singer: string, onClickPlay: () => void, isPlay: boolean,  onClickCollect: () => void, isCollect: boolean, }) => {
+export const ListItem = (p: { img: string, songName: string, singer: string, onClickPlay: () => void, isPlay: boolean, onClickCollect: () => void, isCollect: boolean, }) => {
 
   return (
     <div>
@@ -19,7 +19,7 @@ export const ListItem = (p: { img: string, songName: string, singer: string, onC
 
         <Button img={p.isPlay ? 'stop.png' : 'play.png'} className='buttonList' onclick={p.onClickPlay} />
 
-        <Button img={p.isCollect?'collect.png':'discollect.png'} className='buttonList' onclick={p.onClickCollect} />
+        <Button img={p.isCollect ? 'collect.png' : 'discollect.png'} className='buttonList' onclick={p.onClickCollect} />
 
       </div>
     </div>

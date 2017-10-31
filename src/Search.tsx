@@ -43,6 +43,8 @@ export class Search extends React.Component<{ myMusic: () => void, search: () =>
             nowPlayID: song.songid
         })
 
+        dic.nowPlayID = song.songid
+
     }
 
     collect(song: Song) {
@@ -64,7 +66,8 @@ export class Search extends React.Component<{ myMusic: () => void, search: () =>
         this.setState({
             ...S,
             listSearch: dic.searchList,
-            collectIDs: dic.myCollect.map(v => v.songid)
+            collectIDs: dic.myCollect.map(v => v.songid),
+            nowPlayID: dic.nowPlayID
         })
     }
 

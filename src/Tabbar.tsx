@@ -1,17 +1,17 @@
-import * as React from 'react';
-import './index.css';
+import * as React from 'react'
+import './Tabbar.css'
 
 import { Button } from './Button'
 import { SearchBox } from './SearchBox'
 
-export const Tabbar = (p: { 
-  value?: string, 
-  onChange?: (v: string) => void, 
+export const Tabbar = (p: {
+  value?: string,
+  onChange?: (v: string) => void,
   search?: () => void,
   changPage1?: () => void,
   changPage2?: () => void,
-  backgroundColor1:string,  
-  backgroundColor2:string  
+  backgroundColor1: string,
+  backgroundColor2: string
 }) => {
 
   return (
