@@ -28,10 +28,12 @@ export const LrcScroll = createLRC(p => <div className="Lrc">
 export const LrcOneLine = createLRC(p => <div>{p.lrc[p.index]}</div>)
 
 
-export const Lrc3Line = createLRC(p => {
-    return <div>
-        <div>{p.index > 0 ? p.lrc[p.index - 1] : '---'}</div>
-        <div style={{ color: 'red' }}>{p.lrc[p.index]}</div>
-        <div>{p.index < p.lrc.length - 1 ? p.lrc[p.index + 1] : '---'}</div>
+export const Lrc5Line = createLRC(p => {
+    return <div className="Lrc">
+        <div className="Lrc-1">{p.index > 1 ? p.lrc[p.index - 2] : '--'}</div>
+        <div className="Lrc-1">{p.index > 0 ? p.lrc[p.index - 1] : '--'}</div>
+        <div className="Lrc-2">{p.lrc[p.index]}</div>
+        <div className="Lrc-1">{p.index < p.lrc.length - 1 ? p.lrc[p.index + 1] : '--'}</div>
+        <div className="Lrc-1">{p.index < p.lrc.length - 2 ? p.lrc[p.index + 2] : '--'}</div>
     </div>
 })

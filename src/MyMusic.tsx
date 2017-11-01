@@ -5,7 +5,7 @@ import { ListItem } from './ListItem'
 import { Tabbar } from './Tabbar'
 import { Button } from './Button'
 import { SearchBox } from './SearchBox'
-import { LrcOneLine, LrcScroll, Lrc3Line } from './Lrc'
+import { LrcOneLine, LrcScroll, Lrc5Line } from './Lrc'
 
 import { search, Song, setMusicState } from './QQMusicAPI'
 import { like, dic } from './gobal'
@@ -83,9 +83,7 @@ export class MyMusic extends React.Component<{ myMusic: () => void, search: () =
             />
           )}
         </div>
-        {/* <LrcOneLine /> */}
-        <LrcScroll />
-        {/* <Lrc3Line /> */}
+        <Lrc5Line />
       </div>
     </div>
   }

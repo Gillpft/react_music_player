@@ -1,22 +1,23 @@
 .Lrc{
     transition: 0.7s;
     width: 100%;
-    height: 300px;
+    height: 100%;
     text-align: center;
-    background-color: black;
-    overflow-y:auto;
+    overflow:auto;
 }
 
 .Lrc-1{
     transition: 0.7s;
-    color: rgba(255, 255, 255, 0.187);
+    color: gray;
     font-size: 30px;
     margin: 10px;
 }
 
 .Lrc-2{
     transition: 0.7s;
-    color: #ccff00;
+    color: white;
+    text-shadow: 0 0 0.5em rgba(0, 0, 0, 0.418), 0 0 0.5em black,
+    0 0 0.5em black;
     font-size: 35px;
     margin: 10px;
 }
