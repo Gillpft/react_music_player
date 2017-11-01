@@ -1,0 +1,26 @@
+.song{
+    border-bottom: 1px dashed rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: row;
+    width: 700px;
+  }
+  .songimg{
+    float: left;
+    border-radius: 8px;
+  }
+  .songText{
+    float: left;
+    width: 150px;
+      text-align: left;
+      margin-left: 100px;
+      margin-top: 10px;
+  }
+  .buttonList{
+    height: 40px;
+    width: 40px;
+    border: 0;
+    background: rgba(0, 0, 0, 0);
+    outline: none;
+    margin-left: 10px;
+  }
+  

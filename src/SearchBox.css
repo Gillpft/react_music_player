@@ -1,0 +1,27 @@
+/*组件searchBox*/
+.searchBox{
+    display: flex;
+    flex-direction:row;
+    position: absolute;
+    height: 30px;
+    width: 200px;
+    border: 1px rgba(128, 128, 128, 0.3) solid;
+    border-radius: 8px;
+  }
+  
+  .SearchBoxbutton{
+    height: 30px;
+    width: 20px;
+    border: 0;
+    background: rgba(0, 0, 0, 0);
+    font-size: 20px;
+    outline: none;
+  }
+  .searchBoxInput{
+    border: 0;
+    font-size: 15px;
+    height: 30px;
+    margin-left: 10px;
+    outline: none;
+  }
+  

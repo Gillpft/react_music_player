@@ -3,114 +3,13 @@
   padding: 0;
 }
 body{
-  position: relative;
-}
-
-
-/*组件searchBox*/
-.searchBox{
-  display: flex;
-  flex-direction:row;
-  position: absolute;
-  height: 30px;
-  width: 200px;
-  border: 1px rgba(128, 128, 128, 0.3) solid;
-  border-radius: 2px;
-}
-
-.buttonSearch{
-  height: 30px;
-  width: 20px;
-  border: 0;
-  background: rgba(0, 0, 0, 0);
-  font-size: 20px;
-  outline: none;
-}
-.searchInput{
-  border: 0;
-  font-size: 15px;
-  height: 30px;
-}
-
-/*组件MyMusic*/
-.tabbarMyMusic{
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  height: 50px;
-  margin-top: 10px;
-}
-.buttonMyMusicTrue{
-  height: 30px;
-  width: 60px;
-  font-size: 15px;
-  border: 0 ;
-  outline: none;
-  margin-left: 40px;
-}
-.buttonMyMusicFalse{
-  height: 30px;
-  width: 60px;
-  font-size: 15px;
-  border: 0 ;
-  outline: none;
-  margin-left: 80px;
-  border-radius: 15px 15px 15px 15px;
-}
-/*组件ListItem*/
-.song{
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  display: flex;
-  flex-direction: row;
-}
-.songimg{
-  float: left;
-  border-radius: 8px;
-}
-.songText{
-  float: left;
-  width: 150px;
-	text-align: left;
-	margin-left: 100px;
-	margin-top: 10px;
-}
-.buttonList{
-  height: 40px;
-  width: 40px;
-  border: 0;
-  background: rgba(0, 0, 0, 0);
-  outline: none;
-  margin-left: 10px;
-}
-
-/*组件Search*/
-.searchTop{
-  width: 100%;
-  height: 200px;
-  background-size: 100% 100%;
-  position: relative;
-  background-color: rgba(0, 0, 0, 0.5);
-}
-.searchTopBox{
-  display: flex;
-  position: absolute;
-  width: 750px;
-  height: 50px;
-  background-color: white;
-  border-radius: 10px;
-  margin-left:200px;
-  margin-top: 60px;
   
 }
-.searchTopInput{
-  width: 600px;
-  height: 50px;
-  background-color: rgba(0, 0, 0, 0);
-  border: 0;
-  margin-left: 100px;
-  font-size: 20px;
-  outline: none;
-}
+
+
+
+
+
 
 /*其他*/
 .buttonImg{

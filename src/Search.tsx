@@ -1,5 +1,5 @@
 import * as React from 'react';
-import './index.css';
+import './Search.css';
 
 import { Tabbar } from './Tabbar'
 import { ListItem } from './ListItem'
@@ -19,14 +19,14 @@ const S = {
 
 }
 
-import { Lrc } from './Lrc'
-
 export class Search extends React.Component<{ myMusic: () => void, search: () => void }, typeof S>{
 
     change(text: string) {
         this.setState({
             textSearch: text
         })
+
+        dic.textSearch = text
 
         search(text, list => {
             this.setState({ listSearch: list })
@@ -65,10 +65,12 @@ export class Search extends React.Component<{ myMusic: () => void, search: () =>
     componentWillMount() {
         this.setState({
             ...S,
+            textSearch: dic.textSearch,
             listSearch: dic.searchList,
             collectIDs: dic.myCollect.map(v => v.songid),
             nowPlayID: dic.nowPlayID
         })
+        this.change(dic.textSearch)
     }
 
     getCollect(song: Song) {
@@ -76,18 +78,16 @@ export class Search extends React.Component<{ myMusic: () => void, search: () =>
     }
 
     render() {
-        return <div >
-            <Tabbar
-                changPage1={() => this.props.search()}
-                changPage2={() => this.props.myMusic()}
-                value={this.state.textSearch}
-                onChange={v => this.change(v)}
-                backgroundColor1='rgba(128, 128, 128, 0.5)'
-                backgroundColor2='rgba(128, 128, 128, 0)' />
-            <div className='songList'>
-                <div className='searchTop'>
+        return <div className='search'>
+            <div className='searchTop'>
+                <Tabbar
+                    changPage1={() => this.props.search()}
+                    changPage2={() => this.props.myMusic()}
+                    backgroundColor1='rgba(128, 128, 128, 0.5)'
+                    backgroundColor2='rgba(128, 128, 128, 0)' />
+                <div className='searchTopBox'>
                     <AudioBeat />
-                    <div className='searchTopBox'>
+                    <div className='searchInputBox'>
                         <input
                             className='searchTopInput'
                             placeholder='请输入搜索内容'
@@ -95,8 +95,9 @@ export class Search extends React.Component<{ myMusic: () => void, search: () =>
                             onChange={v => this.change(v.target.value)} />
                     </div>
                 </div>
+            </div>
+            <div className='searchList'>
                 {this.state.listSearch.map((v, index) =>
-
                     <ListItem
                         img={v.albumImageURL}
                         songName={v.songname}

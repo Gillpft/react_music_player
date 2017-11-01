@@ -104,9 +104,9 @@ let audio = new Audio()
 audio.loop = true
 let isPlaying = false
 
-export const getCurrentTime = () => audio.currentTime
-export const getDuration = () => audio.duration
-export const getLrc = () => lrcArr.xxx
+const getCurrentTime = () => audio.currentTime
+const getDuration = () => audio.duration
+const getLrc = () => lrcArr.xxx
 
 export const setMusicState = (s: { songid: number, playing: boolean }) => {
 
@@ -127,4 +127,58 @@ export const setMusicState = (s: { songid: number, playing: boolean }) => {
             audio.pause()
         }
     }
+}
+
+
+import * as React from 'react'
+export const createLRC = (func: (p: { index: number, lrc: string[] }) => JSX.Element) => class Lrc extends React.Component<{}, { index: number, lrc: string[] }> {
+
+    cancel: boolean
+
+    onFrame() {
+
+        let n = Math.floor(getCurrentTime() * 100)
+        let arr = getLrc()
+        let lrc = ''
+        let index = -1
+
+        for (let i = 0; i < arr.length; i++) {
+
+            if (arr[i].time <= n && (i == arr.length - 1 || arr[i + 1].time > n)) {
+                index = i
+                break
+            }
+
+        }
+
+        if (index != -1 && this.state.index != index) {
+
+            this.setState({
+                index: index,
+                lrc: arr.map(v => v.lrc)
+            })
+        }
+
+
+
+        if (this.cancel == false) {
+            requestAnimationFrame(() => this.onFrame())
+        }
+    }
+
+    componentWillMount() {
+        this.cancel = false
+        this.setState({ index: -1, lrc: ['', '', ''] }, () => this.onFrame())
+
+    }
+
+    componentWillUnmount() {
+        this.cancel = true
+    }
+
+
+    render() {
+        return func(this.state)
+    }
+
 }

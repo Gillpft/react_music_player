@@ -1,0 +1,32 @@
+.myMusicTop{
+  display: flex;
+  flex-direction: row;
+  }
+.tabbarMyMusic{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    height: 50px;
+    margin-top: 10px;
+  }
+.buttonMyMusicTrue{
+    height: 30px;
+    width: 60px;
+    font-size: 15px;
+    border: 0 ;
+    outline: none;
+    margin-left: 40px;
+  }
+.buttonMyMusicFalse{
+  height: 30px;
+  width: 60px;
+  font-size: 15px;
+  border: 0 ;
+  outline: none;
+  margin-left: 80px;
+  border-radius: 15px 15px 15px 15px;
+}
+.myMusicBody{
+  display: flex;
+  flex-direction: row;
+}
