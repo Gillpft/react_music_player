@@ -7,6 +7,8 @@
     height: 60px;
     border-bottom: 1.5px rgba(128, 128, 128, 0.3) solid;
     background-color: white;
+    text-shadow: 0 0 0.5em pink, 0 0 0.5em pink,
+    0 0 0.5em pink;
   }
   .PFTMusic{
     position: absolute;
@@ -25,8 +27,8 @@
     margin-left: 400px;
     border-radius: 15px 15px 0px 0px;
     color:white;
-    text-shadow: 0 0 0.2em gray, 0 0 0.2em white,
-    0 0 0.2em black;
+    text-shadow: 0 0 0.5em pink, 0 0 0.5em pink,
+    0 0 0.5em black;
   }
   .buttonTabbarFalse{
     position: absolute;
@@ -39,6 +41,7 @@
     outline: none;
     margin-left: 550px;
     color:white;
-    text-shadow: 0 0 0.2em gray, 0 0 0.2em white,
-    0 0 0.2em black;
+    text-shadow: 0 0 0.5em pink, 0 0 0.5em pink,
+    0 0 0.5em rgba(0, 0, 0, 0.2);
+
   }

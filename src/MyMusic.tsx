@@ -60,7 +60,7 @@ export class MyMusic extends React.Component<{ myMusic: () => void, search: () =
           changPage1={() => this.props.search()}
           changPage2={() => this.props.myMusic()}
           backgroundColor1='rgba(128, 128, 128, 0)'
-          backgroundColor2='rgba(128, 128, 128, 0.5)' />
+          backgroundColor2='rgba(255, 192, 204, 0.7)' />
         <SearchBox
           placeholder='请输入搜索内容'
           value={this.state.textSearch}

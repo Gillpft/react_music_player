@@ -83,8 +83,8 @@ export class Search extends React.Component<{ myMusic: () => void, search: () =>
                 <Tabbar
                     changPage1={() => this.props.search()}
                     changPage2={() => this.props.myMusic()}
-                    backgroundColor1='rgba(128, 128, 128, 0.5)'
-                    backgroundColor2='rgba(128, 128, 128, 0)' />
+                    backgroundColor1='rgba(255, 192, 204, 0.7)'
+                    backgroundColor2='rgba(255, 192, 204, 0)' />
                 <div className='searchTopBox'>
                     <AudioBeat />
                     <div className='searchInputBox'>

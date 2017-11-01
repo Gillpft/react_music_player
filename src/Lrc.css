@@ -16,7 +16,7 @@
 .Lrc-2{
     transition: 0.7s;
     color: white;
-    text-shadow: 0 0 0.5em rgba(0, 0, 0, 0.418), 0 0 0.5em black,
+    text-shadow: 0 0 0.5em pink, 0 0 0.5em pink,
     0 0 0.5em black;
     font-size: 35px;
     margin: 10px;
