@@ -13,7 +13,7 @@ import { like, dic } from './gobal'
 const S = {
     textSearch: '',
     listSearch: [] as Song[],
-
+    isPlaying: true,
     nowPlayID: -1, //当前播放的歌曲id
     collectIDs: [] as number[],//收藏的歌曲id 数组
 
@@ -37,13 +37,14 @@ export class Search extends React.Component<{ myMusic: () => void, search: () =>
     }
 
     play(song: Song) {
-
-        setMusicState({ songid: song.songid, playing: true })
         this.setState({
-            nowPlayID: song.songid
+            nowPlayID: song.songid,
+            isPlaying: song.songid == this.state.nowPlayID && this.state.isPlaying ? false : true
+        },()=>{
+            setMusicState({ songid: song.songid, playing: this.state.isPlaying })
+            dic.nowPlayID = song.songid
         })
-
-        dic.nowPlayID = song.songid
+        
 
     }
 
@@ -61,14 +62,17 @@ export class Search extends React.Component<{ myMusic: () => void, search: () =>
             like(song)
         }
     }
-
+    isPlaying(song: Song) {
+        return this.state.nowPlayID == song.songid && this.state.isPlaying
+      }
     componentWillMount() {
         this.setState({
             ...S,
             textSearch: dic.textSearch,
             listSearch: dic.searchList,
             collectIDs: dic.myCollect.map(v => v.songid),
-            nowPlayID: dic.nowPlayID
+            nowPlayID: dic.nowPlayID,
+            isPlaying: dic.isPlaying
         })
         this.change(dic.textSearch)
     }
@@ -103,7 +107,7 @@ export class Search extends React.Component<{ myMusic: () => void, search: () =>
                         songName={v.songname}
                         singer={v.singerName}
                         onClickPlay={() => this.play(v)}
-                        isPlay={this.state.nowPlayID == v.songid}
+                        isPlay={this.isPlaying(v)}
                         onClickCollect={() => this.collect(v)}
                         isCollect={this.getCollect(v)}
                     />

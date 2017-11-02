@@ -15,6 +15,7 @@ const S = {
   nowPlayID: -1, //当前播放的歌曲id
   nowPlayImgURL: '',
   textSearch: dic.textSearch,
+  isPlaying: true,
   list: [] as Song[],
   backgroundColor1: 'rgba(128, 128, 128, 0.5)',
   backgroundColor2: 'rgba(128, 128, 128, 0)'
@@ -28,18 +29,23 @@ export class MyMusic extends React.Component<{ myMusic: () => void, search: () =
       textSearch: dic.textSearch,
       nowPlayID: dic.nowPlayID,
       list: dic.myCollect,
-      nowPlayImgURL:dic.nowPlayImgURL
+      nowPlayImgURL: dic.nowPlayImgURL,
+      isPlaying: dic.isPlaying
     })
+
   }
 
   play(song: Song) {
-    setMusicState({ songid: song.songid, playing: true })
     this.setState({
       nowPlayID: song.songid,
-      nowPlayImgURL: song.albumImageURL
+      nowPlayImgURL: song.albumImageURL,
+      isPlaying: song.songid == this.state.nowPlayID && this.state.isPlaying ? false : true
+    }, () => {
+      setMusicState({ songid: song.songid, playing: this.state.isPlaying })
+      dic.nowPlayID = song.songid
+      dic.nowPlayImgURL = song.albumImageURL
+      dic.isPlaying = this.state.isPlaying
     })
-    dic.nowPlayID = song.songid
-    dic.nowPlayImgURL = song.albumImageURL
   }
 
   collect(song: Song) {
@@ -55,6 +61,10 @@ export class MyMusic extends React.Component<{ myMusic: () => void, search: () =
     this.setState({
       textSearch: dic.textSearch
     })
+  }
+
+  isPlaying(song: Song) {
+    return this.state.nowPlayID == song.songid && this.state.isPlaying
   }
 
   render() {
@@ -82,14 +92,14 @@ export class MyMusic extends React.Component<{ myMusic: () => void, search: () =
               songName={v.songname}
               singer={v.singerName}
               onClickPlay={() => this.play(v)}
-              isPlay={this.state.nowPlayID == v.songid}
+              isPlay={this.isPlaying(v)}
               onClickCollect={() => this.collect(v)}
               isCollect={true}
             />
           )}
         </div>
         <div className='player'>
-          <ImgRotate songImg={this.state.nowPlayImgURL}/>
+          <ImgRotate songImg={this.state.nowPlayImgURL} />
           <Lrc5Line />
         </div>
       </div>

@@ -7,7 +7,8 @@ export const dic = {
     nowPlayID: -1,
     nowSearch: '',
     textSearch: '',
-    nowPlayImgURL: ''
+    nowPlayImgURL: '',
+    isPlaying: true
 }
 
 export const like = (song: Song) => {
