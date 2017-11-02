@@ -7,7 +7,7 @@ export const dic = {
     nowPlayID: -1,
     nowSearch: '',
     textSearch: '',
-    nowPlayImgURL: '',
+    nowPlayImgURL: 'noImg.jpg',
     isPlaying: true
 }
 

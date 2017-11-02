@@ -16,7 +16,7 @@ const S = {
     isPlaying: true,
     nowPlayID: -1, //当前播放的歌曲id
     collectIDs: [] as number[],//收藏的歌曲id 数组
-
+    nowPlayImgURL: ''
 }
 
 export class Search extends React.Component<{ myMusic: () => void, search: () => void }, typeof S>{
@@ -40,11 +40,12 @@ export class Search extends React.Component<{ myMusic: () => void, search: () =>
         this.setState({
             nowPlayID: song.songid,
             isPlaying: song.songid == this.state.nowPlayID && this.state.isPlaying ? false : true
-        },()=>{
+        }, () => {
             setMusicState({ songid: song.songid, playing: this.state.isPlaying })
             dic.nowPlayID = song.songid
+            dic.nowPlayImgURL = song.albumImageURL
         })
-        
+
 
     }
 
@@ -64,7 +65,7 @@ export class Search extends React.Component<{ myMusic: () => void, search: () =>
     }
     isPlaying(song: Song) {
         return this.state.nowPlayID == song.songid && this.state.isPlaying
-      }
+    }
     componentWillMount() {
         this.setState({
             ...S,
@@ -72,7 +73,8 @@ export class Search extends React.Component<{ myMusic: () => void, search: () =>
             listSearch: dic.searchList,
             collectIDs: dic.myCollect.map(v => v.songid),
             nowPlayID: dic.nowPlayID,
-            isPlaying: dic.isPlaying
+            isPlaying: dic.isPlaying,
+            nowPlayImgURL : dic.nowPlayImgURL
         })
         this.change(dic.textSearch)
     }
