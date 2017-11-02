@@ -40,6 +40,9 @@ const dic: { [index: string]: (songList: Song[]) => void } = Object.create(null)
 
 window[SEARCH_CALLBACK] = (d: SearchCallback) => {
     const keyword = d.data.keyword
+    if (searchKeyword != keyword) {
+        return
+    }
     const f = dic[keyword]
     const list = d.data.song.list
 
@@ -57,10 +60,12 @@ window[SEARCH_CALLBACK] = (d: SearchCallback) => {
 }
 
 
+let searchKeyword = ''
 export const search = (keyword: string, callback: (songList: Song[]) => void) => {
     dic[keyword] = callback
+    searchKeyword = keyword
     const node = document.createElement('script')
-    node.src = `http://c.y.qq.com/soso/fcgi-bin/search_cp?&p=1&n=50&w=${encodeURI(keyword)}&aggr=1&lossless=1&cr=1&jsonpCallback=${SEARCH_CALLBACK}`
+    node.src = `https://c.y.qq.com/soso/fcgi-bin/search_cp?&p=1&n=50&w=${encodeURI(keyword)}&aggr=1&lossless=1&cr=1&jsonpCallback=${SEARCH_CALLBACK}`
     document.body.appendChild(node)
     node.onload = () => document.body.removeChild(node)
 }
