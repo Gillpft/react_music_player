@@ -6,7 +6,7 @@
   }
   .songimg{
     float: left;
-    border-radius: 8px;
+    border-radius: 50% 8px 8px 50%;
   }
   .songText{
     float: left;

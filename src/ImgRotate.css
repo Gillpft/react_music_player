@@ -1,0 +1,12 @@
+.ImgRotate{
+    height: 500px;
+    width: 100%;
+    display: flex;
+    justify-content: center
+}
+.ImgRotateImg{
+    height: 300px;
+    width: 300px;
+    margin: auto auto;
+    border-radius: 50% 50%;
+}

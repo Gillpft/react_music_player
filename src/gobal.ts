@@ -6,7 +6,8 @@ export const dic = {
     myCollect: [] as Song[],
     nowPlayID: -1,
     nowSearch: '',
-    textSearch: ''
+    textSearch: '',
+    nowPlayImgURL: ''
 }
 
 export const like = (song: Song) => {
