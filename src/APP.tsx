@@ -14,7 +14,7 @@ const S = {
 export class APP extends React.Component<{}, typeof S>{
 
     componentWillMount() {
-        this.state = S
+        this.setState(S)
     }
     changePage(v:string){
         this.setState({
