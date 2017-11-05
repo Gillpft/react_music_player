@@ -55,6 +55,7 @@ export class Search extends React.Component<{ myMusic: () => void, search: () =>
             this.setState({
                 collectIDs: this.state.collectIDs.filter(id => id != song.songid)
             })
+            dic.myCollect=dic.myCollect.filter (v => v.songid != song.songid)
         } else {
             //收藏
             this.setState({

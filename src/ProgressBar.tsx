@@ -1,6 +1,5 @@
 import * as React from 'react'
 
-
 import { Button } from './Button'
 
 export const ProgressBar = (p: { time: number, onclick: () => void }) => {
