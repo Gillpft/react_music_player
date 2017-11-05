@@ -1,5 +1,5 @@
 import * as React from 'react';
-import './index.css';
+import './AudioBeat.css';
 
 import { Button } from './Button'
 import { SearchBox } from './SearchBox'

@@ -1,0 +1,19 @@
+.container {
+    margin:50px auto;
+  
+  }
+  .bar-unfill {
+    display:block;
+    background:rgb(0, 0, 0);
+    width:100%;
+    border-radius:8px
+  }
+  .bar-fill {
+    display:block;
+    background:white;
+    box-shadow: 0 0 0.8em black, 0 0 0.8em black,
+    0 0 0.8em black;
+    border-radius:8px;
+  }
+  
+  

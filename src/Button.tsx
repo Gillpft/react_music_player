@@ -1,7 +1,7 @@
 import * as React from 'react'
-import './index.css'
+import './Button.css'
 
-export const Button = (p: { text?: string, img?: string, backgroundColor?:string, className?:string, margin?: number,  onclick?: () => void }) => {
+export const Button = (p: { text?: string, img?: string, backgroundColor?:string, className?:string, onclick?: () => void }) => {
   if (p.text != null) {
     return <button className={p.className} style={{backgroundColor:p.backgroundColor}} onClick={p.onclick}>{p.text}</button>
   }
@@ -10,8 +10,5 @@ export const Button = (p: { text?: string, img?: string, backgroundColor?:string
       <img className='buttonImg' src={p.img} ></img>
     </button>
   }
-  if (p.margin != null) {
-    return <button className='buttonO' ></button>
-  }
-  return <button className='buttonO' ></button>
+  return <button></button>
 }

@@ -1,6 +1,4 @@
 import * as React from 'react';
-import './index.css';
-
 
 import { MyMusic } from './MyMusic'
 import { Search } from './Search'

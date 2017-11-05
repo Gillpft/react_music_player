@@ -38,7 +38,7 @@ export class Player extends React.Component {
             </div>
             <div style={{ display: 'flex', flexDirection: 'row', marginTop: '40' }}>
                 <ProgressBar time={60} onclick={() => alert(123)} />
-                <VolumeBar volume={20} onclick={() => alert(123)} />
+                <VolumeBar onclick={() => alert(123)} />
             </div >
         </div>
     }
