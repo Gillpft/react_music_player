@@ -2,7 +2,7 @@ import * as React from 'react';
 import './Search.css';
 
 import { Tabbar } from './Tabbar'
-import { ListItem } from './ListItem'
+import { List } from './List'
 import { Button } from './Button'
 import { AudioBeat } from './AudioBeat'
 
@@ -13,13 +13,20 @@ import { like, dic } from './gobal'
 const S = {
     textSearch: '',
     listSearch: [] as Song[],
-    isPlaying: true,
-    nowPlayID: -1, //当前播放的歌曲id
     collectIDs: [] as number[],//收藏的歌曲id 数组
-    nowPlayImgURL: ''
 }
 
 export class Search extends React.Component<{ myMusic: () => void, search: () => void }, typeof S>{
+
+    componentWillMount() {
+        this.setState({
+            ...S,
+            textSearch: dic.textSearch,
+            listSearch: dic.searchList,                        
+            collectIDs: dic.myCollect.map(v => v.songid),
+        })
+        this.change(dic.textSearch)
+    }
 
     change(text: string) {
         this.setState({
@@ -32,21 +39,6 @@ export class Search extends React.Component<{ myMusic: () => void, search: () =>
             this.setState({ listSearch: list })
             dic.searchList = list
         })
-
-
-    }
-
-    play(song: Song) {
-        this.setState({
-            nowPlayID: song.songid,
-            isPlaying: song.songid == this.state.nowPlayID && this.state.isPlaying ? false : true
-        }, () => {
-            setMusicState({ songid: song.songid, playing: this.state.isPlaying })
-            dic.nowPlayID = song.songid
-            dic.nowPlayImgURL = song.albumImageURL
-        })
-
-
     }
 
     collect(song: Song) {
@@ -55,7 +47,7 @@ export class Search extends React.Component<{ myMusic: () => void, search: () =>
             this.setState({
                 collectIDs: this.state.collectIDs.filter(id => id != song.songid)
             })
-            dic.myCollect=dic.myCollect.filter (v => v.songid != song.songid)
+            dic.myCollect = dic.myCollect.filter(v => v.songid != song.songid)
         } else {
             //收藏
             this.setState({
@@ -64,22 +56,7 @@ export class Search extends React.Component<{ myMusic: () => void, search: () =>
             like(song)
         }
     }
-    isPlaying(song: Song) {
-        return this.state.nowPlayID == song.songid && this.state.isPlaying
-    }
-    componentWillMount() {
-        this.setState({
-            ...S,
-            textSearch: dic.textSearch,
-            listSearch: dic.searchList,
-            collectIDs: dic.myCollect.map(v => v.songid),
-            nowPlayID: dic.nowPlayID,
-            isPlaying: dic.isPlaying,
-            nowPlayImgURL : dic.nowPlayImgURL
-        })
-        this.change(dic.textSearch)
-    }
-
+    
     getCollect(song: Song) {
         return this.state.collectIDs.find(id => song.songid == id) != null
     }
@@ -103,19 +80,11 @@ export class Search extends React.Component<{ myMusic: () => void, search: () =>
                     </div>
                 </div>
             </div>
-            <div className='searchList'>
-                {this.state.listSearch.map((v, index) =>
-                    <ListItem
-                        img={v.albumImageURL}
-                        songName={v.songname}
-                        singer={v.singerName}
-                        onClickPlay={() => this.play(v)}
-                        isPlay={this.isPlaying(v)}
-                        onClickCollect={() => this.collect(v)}
-                        isCollect={this.getCollect(v)}
-                    />
-                )}
-            </div>
+            <List
+                listClassName='searchList'
+                list={this.state.listSearch}
+                collect={(v) => this.collect(v)}
+                getCollect={(v) => this.getCollect(v)} />
         </div>
     }
 }

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import './MyMusic.css';
 
-import { ListItem } from './ListItem'
+import { List } from './List'
 import { Tabbar } from './Tabbar'
 import { Button } from './Button'
 import { SearchBox } from './SearchBox'
@@ -12,13 +12,9 @@ import { search, Song, setMusicState } from './QQMusicAPI'
 import { like, dic } from './gobal'
 
 const S = {
-  nowPlayID: -1, //当前播放的歌曲id
-  nowPlayImgURL: '',
-  textSearch: dic.textSearch,
-  isPlaying: true,
-  list: [] as Song[],
-  backgroundColor1: 'rgba(128, 128, 128, 0.5)',
-  backgroundColor2: 'rgba(128, 128, 128, 0)'
+  textSearch: '',
+  collectList: [] as Song[],
+  nowPlayImgURL:''
 }
 
 export class MyMusic extends React.Component<{ myMusic: () => void, search: () => void }, typeof S>{
@@ -27,24 +23,8 @@ export class MyMusic extends React.Component<{ myMusic: () => void, search: () =
     this.setState({
       ...S,
       textSearch: dic.textSearch,
-      nowPlayID: dic.nowPlayID,
-      list: dic.myCollect,
-      nowPlayImgURL: dic.nowPlayImgURL,
-      isPlaying: dic.isPlaying
-    })
-
-  }
-
-  play(song: Song) {
-    this.setState({
-      nowPlayID: song.songid,
-      nowPlayImgURL: song.albumImageURL,
-      isPlaying: song.songid == this.state.nowPlayID && this.state.isPlaying ? false : true
-    }, () => {
-      setMusicState({ songid: song.songid, playing: this.state.isPlaying })
-      dic.nowPlayID = song.songid
-      dic.nowPlayImgURL = song.albumImageURL
-      dic.isPlaying = this.state.isPlaying
+      collectList: dic.myCollect,
+      nowPlayImgURL:dic.nowPlayImgURL
     })
   }
 
@@ -52,8 +32,12 @@ export class MyMusic extends React.Component<{ myMusic: () => void, search: () =
     //取消收藏
     dic.myCollect = dic.myCollect.filter(v => v.songid != song.songid)
     this.setState({
-      list: dic.myCollect
+      collectList: dic.myCollect
     })
+  }
+
+  getcollect(song: Song){
+    return true
   }
 
   onChange(text: string) {
@@ -61,10 +45,6 @@ export class MyMusic extends React.Component<{ myMusic: () => void, search: () =
     this.setState({
       textSearch: dic.textSearch
     })
-  }
-
-  isPlaying(song: Song) {
-    return this.state.nowPlayID == song.songid && this.state.isPlaying
   }
 
   render() {
@@ -77,7 +57,7 @@ export class MyMusic extends React.Component<{ myMusic: () => void, search: () =
           backgroundColor1='rgba(128, 128, 128, 0)'
           backgroundColor2='rgba(255, 192, 204, 0.7)' />
         <SearchBox
-          placeholder='请输入搜索内容'
+          placeholder='想听什么歌'
           value={this.state.textSearch}
           marginLeft={900}
           marginTop={30}
@@ -85,19 +65,11 @@ export class MyMusic extends React.Component<{ myMusic: () => void, search: () =
           search={() => this.props.search()} />
       </div>
       <div className='myMusicBody'>
-        <div className='myMusicList'>
-          {this.state.list.map((v, index) =>
-            <ListItem
-              img={v.albumImageURL}
-              songName={v.songname}
-              singer={v.singerName}
-              onClickPlay={() => this.play(v)}
-              isPlay={this.isPlaying(v)}
-              onClickCollect={() => this.collect(v)}
-              isCollect={true}
-            />
-          )}
-        </div>
+        <List 
+        listClassName='myMusicList'
+        list={this.state.collectList}
+        collect={(v)=>this.collect(v)}
+        getCollect={(v)=>this.getcollect(v)}/>
         <div className='player'>
           <ImgRotate songImg={this.state.nowPlayImgURL} />
           <Lrc5Line />

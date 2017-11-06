@@ -5,8 +5,9 @@
     margin-top: 30px;
     width: 100%;
     height: 60px;
-    border-bottom: 1.5px rgba(128, 128, 128, 0.3) solid;
-    background-color: white;
+    border-bottom: 1.5px white solid;
+    box-shadow: 0 2px 0 rgba(255, 192, 204, 0.228);
+    background-color: rgb(255, 255, 255);
     text-shadow: 0 0 0.5em pink, 0 0 0.5em pink,
     0 0 0.5em pink;
   }
@@ -15,6 +16,7 @@
     font-family: Chalkduster, fantasy;
     font-size: 40px;
     width: 400px;
+    margin-left: 20px;
   }
   .buttonTabbarTrue{
     position: absolute;
@@ -28,7 +30,7 @@
     border-radius: 15px 15px 0px 0px;
     color:white;
     text-shadow: 0 0 0.5em pink, 0 0 0.5em pink,
-    0 0 0.5em black;
+    0 0 0.5em rgba(0, 0, 0, 0.5);
   }
   .buttonTabbarFalse{
     position: absolute;
@@ -42,6 +44,5 @@
     margin-left: 550px;
     color:white;
     text-shadow: 0 0 0.5em pink, 0 0 0.5em pink,
-    0 0 0.5em rgba(0, 0, 0, 0.2);
-
+    0 0 0.5em rgba(0, 0, 0, 0.5);
   }
