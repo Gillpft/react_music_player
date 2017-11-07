@@ -20,6 +20,19 @@ export const like = (song: Song) => {
     save()
 }
 
+let fArr = [] as (()=>void)[]
+
+export const 注册通知 = (f:()=>void)=>{
+    fArr.push(f)
+}
+
+export const 撤销通知 = (f:()=>void)=>{
+    fArr=fArr.filter(v=>v!=f)
+}
+
+export const 发送通知 = ()=>{
+    fArr.forEach(v=>v())
+}
 
 export const save = () =>
     localStorage.setItem('myCollect', JSON.stringify(dic.myCollect))
