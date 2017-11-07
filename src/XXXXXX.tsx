@@ -1,17 +1,17 @@
 import * as React from 'react';
 import { like, dic, 注册通知, 移除通知 } from './gobal'
 
-export class XXXXXX extends React.Component<{}, { nowPlay: number }> {
+export class XXXXXX extends React.Component<{}, { count: number }> {
 
 
     f = () => {
         this.setState({
-            nowPlay: dic.nowPlayID
+            count: dic.myCollect.length
         })
     }
 
     componentWillMount() {
-        this.setState({ nowPlay: dic.nowPlayID })
+        this.setState({ count: dic.myCollect.length })
         注册通知(this.f)
     }
 
@@ -20,6 +20,6 @@ export class XXXXXX extends React.Component<{}, { nowPlay: number }> {
     }
 
     render() {
-        return <h1>当前播放的是 {this.state.nowPlay} </h1>
+        return <h1>当前收藏数量 {this.state.count} </h1>
     }
 }

@@ -10,7 +10,6 @@ import { ImgRotate } from './ImgRotate'
 
 import { search, Song, setMusicState } from './QQMusicAPI'
 import { like, dic, 注册通知, 移除通知 } from './gobal'
-import { XXXXXX } from './XXXXXX'
 
 const S = {
   textSearch: '',
@@ -69,7 +68,6 @@ export class MyMusic extends React.Component<{ myMusic: () => void, search: () =
   render() {
 
     return <div className='MyMusic'>
-      <XXXXXX />
       <div className='MyMusicTop'>
         <Tabbar
           changPage1={() => this.props.search()}

@@ -8,7 +8,6 @@ import { Button } from './Button'
 import { search, Song, setMusicState } from './QQMusicAPI'
 
 import { like, dic } from './gobal'
-import { XXXXXX } from './XXXXXX'
 
 const S = {
     textSearch: '',
