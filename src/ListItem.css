@@ -1,24 +1,27 @@
-.song{
-    border-bottom: 1px dashed rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: row;
-    width: 700px;
-    margin-left: 30px;
-  }
+.ListItem{
+  float: left;
+  border-bottom: 1px dashed rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: row;
+  justify-content:center;
+  align-items: center;
+  width: 100%;
+  height: auto;
+}
   
   .songText{
     float: left;
-    width: 150px;
-      text-align: left;
-      margin-left: 100px;
-      margin-top: 10px;
+    width: 35%;
+    height: 80%;
+    text-align: left;
   }
   .buttonList{
-    height: 40px;
-    width: 40px;
+    float: right;
+    height: 100%;
+    width: 5%;
     border: 0;
     background: rgba(0, 0, 0, 0);
     outline: none;
-    margin-left: 10px;
+    margin-right:5%;
   }
   

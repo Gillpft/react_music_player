@@ -1,27 +1,39 @@
-.myMusic{
-  position: fixed;
-}
-.myMusicTop{
-  display: flex;
-  flex-direction: row;
-  margin-bottom: 50px
-  }
-.tabbarMyMusic{
-    display: flex;
-    flex-direction: row;
-    height: 50px;
-    margin-top: 10px;
-  }
-.myMusicBody{
-  display: flex;
-  flex-direction: row;
-}
-.player{
+.MyMusic{
+  float: left;
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center
+  align-content: stretch;
 }
-.myMusicList{
-  height: 300px;
-  overflow-y: scroll
+.MyMusicTop{
+  float: left;
+  width: 100%;
+  height: 20%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  }
+.MyMusicBody{
+  float: left;
+  width: 100%;
+  height: 100%;
+  margin-top: 5%;
+  display: flex;
+  flex-direction: row;
+  justify-content:space-around;
+}
+.player{
+  float: right; 
+  width: 30%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.MyMusicList{
+  float: left;
+  width:50%;
+  height: 400px;
+  overflow-y: scroll;
 }

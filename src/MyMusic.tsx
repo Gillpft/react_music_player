@@ -9,23 +9,42 @@ import { LrcOneLine, LrcScroll, Lrc5Line } from './Lrc'
 import { ImgRotate } from './ImgRotate'
 
 import { search, Song, setMusicState } from './QQMusicAPI'
-import { like, dic } from './gobal'
+import { like, dic, 注册通知, 移除通知 } from './gobal'
+import { XXXXXX } from './XXXXXX'
 
 const S = {
   textSearch: '',
   collectList: [] as Song[],
-  nowPlayImgURL:''
+  nowPlayImgURL: ''
 }
 
+
+
+
+
 export class MyMusic extends React.Component<{ myMusic: () => void, search: () => void }, typeof S>{
+
+  f = () => {
+    this.setState({
+      textSearch: dic.textSearch,
+      collectList: dic.myCollect,
+      nowPlayImgURL: dic.nowPlayImgURL
+    })
+  }
 
   componentWillMount() {
     this.setState({
       ...S,
       textSearch: dic.textSearch,
       collectList: dic.myCollect,
-      nowPlayImgURL:dic.nowPlayImgURL
+      nowPlayImgURL: dic.nowPlayImgURL
     })
+
+    注册通知(this.f)
+  }
+
+  componentWillUnmount() {
+    移除通知(this.f)
   }
 
   collect(song: Song) {
@@ -36,7 +55,7 @@ export class MyMusic extends React.Component<{ myMusic: () => void, search: () =
     })
   }
 
-  getcollect(song: Song){
+  getcollect(song: Song) {
     return true
   }
 
@@ -49,8 +68,9 @@ export class MyMusic extends React.Component<{ myMusic: () => void, search: () =
 
   render() {
 
-    return <div className='myMusic'>
-      <div className='myMusicTop'>
+    return <div className='MyMusic'>
+      <XXXXXX />
+      <div className='MyMusicTop'>
         <Tabbar
           changPage1={() => this.props.search()}
           changPage2={() => this.props.myMusic()}
@@ -64,13 +84,13 @@ export class MyMusic extends React.Component<{ myMusic: () => void, search: () =
           onChange={v => this.onChange(v)}
           search={() => this.props.search()} />
       </div>
-      <div className='myMusicBody'>
-        <List 
-        listClassName='myMusicList'
-        list={this.state.collectList}
-        collect={(v)=>this.collect(v)}
-        getCollect={(v)=>this.getcollect(v)}/>
-        <div className='player'>
+      <div className='MyMusicBody'>
+        <List
+          listClassName='MyMusicList'
+          list={this.state.collectList}
+          collect={(v) => this.collect(v)}
+          getCollect={(v) => this.getcollect(v)} />
+        <div className='player' >
           <ImgRotate songImg={this.state.nowPlayImgURL} />
           <Lrc5Line />
         </div>

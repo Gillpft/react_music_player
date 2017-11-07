@@ -5,9 +5,7 @@ import { Button } from './Button'
 
 export const ListItem = (p: { songName: string, singer: string, onClickPlay: () => void, isPlay: boolean, onClickCollect: () => void, isCollect: boolean, }) => {
 
-  return <div className='song'  >
-
-    
+  return <div className='ListItem'  >  
     <div className='songText'>
       {p.songName}
     </div>

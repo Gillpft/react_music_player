@@ -5,7 +5,7 @@ import { ListItem } from './ListItem'
 
 import { search, Song, setMusicState } from './QQMusicAPI'
 
-import { like, dic } from './gobal'
+import { like, dic, 发送通知 } from './gobal'
 
 const S = {
   nowPlayID: -1, //当前播放的歌曲id
@@ -13,7 +13,7 @@ const S = {
   isPlaying: true,
 }
 
-export class List extends React.Component<{ listClassName:string, list:Song[],collect:(v:Song)=>void,getCollect:(v:Song)=>boolean }, typeof S>{
+export class List extends React.Component<{ listClassName: string, list: Song[], collect: (v: Song) => void, getCollect: (v: Song) => boolean }, typeof S>{
 
   componentWillMount() {
     this.setState({
@@ -34,6 +34,7 @@ export class List extends React.Component<{ listClassName:string, list:Song[],co
       dic.nowPlayID = song.songid
       dic.nowPlayImgURL = song.albumImageURL
       dic.isPlaying = this.state.isPlaying
+      发送通知()
     })
   }
 

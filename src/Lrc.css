@@ -1,4 +1,5 @@
 .Lrc{
+    float: left;
     transition: 0.7s;
     width: 100%;
     height: 100%;
@@ -7,17 +8,19 @@
 }
 
 .Lrc-1{
+    float: center;
     transition: 0.7s;
     color: gray;
-    font-size: 30px;
-    margin: 10px;
+    font-size: 1.0em;
+    margin: 5%;
 }
 
 .Lrc-2{
+    float: center;
     transition: 0.7s;
     color: white;
     text-shadow: 0 0 0.5em pink, 0 0 0.5em pink,
     0 0 0.5em black;
-    font-size: 35px;
-    margin: 10px;
+    font-size: 1.3em;
+    margin: 5%;
 }

@@ -1,5 +1,8 @@
 .buttonImg{
-    width: 25px;
-    height: 25px;
-    border-radius: 50% 50% 50% 50%;  
-  }
+  float: center;
+  width: auto;
+  height: 50%;
+  width: 50%;
+  border-radius: 50% 50% 50% 50%;  
+  -ms-interpolation-mode: bicubic;
+}

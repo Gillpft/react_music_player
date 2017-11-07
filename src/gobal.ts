@@ -8,7 +8,21 @@ export const dic = {
     nowSearch: '',
     textSearch: '',
     nowPlayImgURL: 'noImg.jpg',
-    isPlaying: true
+    isPlaying: true,
+}
+
+let funcArr = [] as (() => void)[]
+
+export const 注册通知 = (f: () => void) => {
+    funcArr = [...funcArr, f]
+}
+
+export const 移除通知 = (f: () => void) => {
+    funcArr = funcArr.filter(v => v != f)
+}
+
+export const 发送通知 = () => {
+    funcArr.forEach(f => f())
 }
 
 export const like = (song: Song) => {

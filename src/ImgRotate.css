@@ -1,12 +1,14 @@
 .ImgRotate{
-    height: 500px;
+    float: center;
+    height: 20%;
     width: 100%;
     display: flex;
     justify-content: center
 }
 .ImgRotateImg{
-    height: 300px;
-    width: 300px;
+    float: center;
+    height: 50%;
+    width: 50%;
     margin: auto auto;
     border-radius: 50% 50%;
 }
