@@ -9,7 +9,7 @@ import { LrcOneLine, LrcScroll, Lrc5Line } from './Lrc'
 import { ImgRotate } from './ImgRotate'
 
 import { search, Song, setMusicState } from './QQMusicAPI'
-import { like, dic, 注册通知, 撤销通知 } from './gobal'
+import { like, dic, 注册通知, 撤销通知,save } from './gobal'
 
 const S = {
   textSearch: '',
@@ -17,15 +17,7 @@ const S = {
   nowPlayImgURL: ''
 }
 
-
-
-
-
-
-
 export class MyMusic extends React.Component<{ myMusic: () => void, search: () => void }, typeof S>{
-
-
 
   f = () => {
     this.setState({
@@ -53,6 +45,7 @@ export class MyMusic extends React.Component<{ myMusic: () => void, search: () =
     this.setState({
       collectList: dic.myCollect
     })
+    save()
   }
 
   getcollect(song: Song) {

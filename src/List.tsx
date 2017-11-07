@@ -46,6 +46,7 @@ export class List extends React.Component<{ listClassName: string, list: Song[],
     return <div className={this.props.listClassName}>
       {this.props.list.map((v, index) =>
         <ListItem
+          key={v.songid}
           songName={v.songname}
           singer={v.singerName}
           onClickPlay={() => this.play(v)}
