@@ -1,0 +1,43 @@
+.Player{
+    float: left;
+    width: 100%;
+    height: 100%;
+    display: flex; 
+    flex-direction: row;
+    justify-content: flex-start;
+}
+.PlayerButton{
+    float: left;
+    margin-left: 10%; 
+    width: 25%;
+    display: flex; 
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.button1{
+    float: center;
+    height: 100%;
+    width: 60px;
+    border: 0;
+    background: rgba(0, 0, 0, 0);
+    font-size: 150%;
+    outline: none;
+}
+.button2{
+    float: center;
+    height: 100%;
+    width: 20%;
+    border: 0;
+    background: rgba(0, 0, 0, 0);
+    outline: none;
+  }
+.PlayerBar{
+    float: center;
+    width: 60%;
+    display: flex;
+    flex-direction: row;
+}
+.Playerset{
+    float: left;
+}

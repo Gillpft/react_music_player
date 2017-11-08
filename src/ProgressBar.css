@@ -1,0 +1,40 @@
+.ProgressBar {
+    float: center;
+    height: 100%;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .ProgressBarAll {
+    float: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    background:rgb(0, 0, 0);
+    width:100%;
+    height:5px;
+    border-radius:8px
+  }
+  .ProgressBarFill {
+    float: left;
+    height: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    background-color:white;
+    box-shadow: 0 0 0.8em black, 0 0 0.8em black,
+    0 0 0.8em black;
+    border-radius:8px;
+  }
+  .ProgressBarButton{
+    border: 0;
+    float: right;
+    height: 5px;
+    width: 6px;
+    background-color: pink;
+    border-radius: 0 50% 50% 0 ;
+    outline: none;
+  }     
+  
+    

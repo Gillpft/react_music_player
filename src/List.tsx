@@ -5,7 +5,7 @@ import { ListItem } from './ListItem'
 
 import { search, Song, setMusicState } from './QQMusicAPI'
 
-import { like, dic, 发送通知 } from './gobal'
+import { like, dic, 发送通知, 注册通知,撤销通知 } from './gobal'
 
 const S = {
   nowPlayID: -1, //当前播放的歌曲id
@@ -14,7 +14,11 @@ const S = {
 }
 
 export class List extends React.Component<{ listClassName: string, list: Song[], collect: (v: Song) => void, getCollect: (v: Song) => boolean }, typeof S>{
-
+  f = () => {
+    this.setState({
+      isPlaying: dic.isPlaying
+    })
+  }
   componentWillMount() {
     this.setState({
       ...S,
@@ -22,6 +26,11 @@ export class List extends React.Component<{ listClassName: string, list: Song[],
       nowPlayImgURL: dic.nowPlayImgURL,
       isPlaying: dic.isPlaying,
     })
+    注册通知(this.f)
+  }
+
+  componentWillUnmount() {
+    撤销通知(this.f)
   }
 
   play(song: Song) {
@@ -34,6 +43,9 @@ export class List extends React.Component<{ listClassName: string, list: Song[],
       dic.nowPlayID = song.songid
       dic.nowPlayImgURL = song.albumImageURL
       dic.isPlaying = this.state.isPlaying
+      dic.nowPlaySongName = song.songname
+      dic.nowPlaySong = song
+      dic.isCollected = dic.myCollect.find(v=>v.songid==this.state.nowPlayID)!=null
       发送通知()
     })
   }

@@ -1,19 +1,38 @@
-.container {
-    margin:50px auto;
-  
-  }
-  .bar-unfill {
-    display:block;
-    background:rgb(0, 0, 0);
-    width:100%;
-    border-radius:8px
-  }
-  .bar-fill {
-    display:block;
-    background:white;
-    box-shadow: 0 0 0.8em black, 0 0 0.8em black,
-    0 0 0.8em black;
-    border-radius:8px;
-  }
-  
+.VolumeBar {
+  float: right;
+  margin:auto auto;
+  width: 20px;
+  height: 100%;
+}
+.VolumeBarAll {
+  margin: 0;
+  float: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background:rgb(0, 0, 0);
+  width:20%;
+  border-radius:8px
+}
+.VolumeBarFill {
+  float: center;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background-color:white;
+  box-shadow: 0 0 0.8em black, 0 0 0.8em black,
+  0 0 0.8em black;
+  border-radius:8px;
+}
+.VolumeBarButton{
+  border: 0;
+  float: center;
+  height: 6px;
+  width: 100%;
+  background-color: pink;
+  border-radius: 50% 50% 0 0;
+  outline: none;
+}
+
   

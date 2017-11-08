@@ -8,7 +8,10 @@ export const dic = {
     nowSearch: '',
     textSearch: '',
     nowPlayImgURL: 'noImg.jpg',
-    isPlaying: true,
+    isPlaying: false,
+    isCollected: false,
+    nowPlaySong: {} as Song,
+    nowPlaySongName: ''
 }
 
 
@@ -20,18 +23,37 @@ export const like = (song: Song) => {
     save()
 }
 
-let fArr = [] as (()=>void)[]
 
-export const 注册通知 = (f:()=>void)=>{
+
+export const changeSong = (songid: number,a:number) => {
+    const song = dic.myCollect.find(v => v.songid == songid)
+    if (song != null) {
+        const index = dic.myCollect.indexOf(song) + a
+        if (index < dic.myCollect.length) {
+            const nowPlaySong = dic.myCollect.find((v, i) =>
+                i == (dic.myCollect.indexOf(song) + a))
+            dic.nowPlaySong = nowPlaySong
+            dic.nowPlayID = nowPlaySong.songid
+            dic.nowPlayImgURL = nowPlaySong.albumImageURL
+            dic.nowPlaySongName = nowPlaySong.songname
+        }
+    }
+    setMusicState({ songid: song.songid, playing: dic.isPlaying })
+    发送通知()
+}
+
+let fArr = [] as (() => void)[]
+
+export const 注册通知 = (f: () => void) => {
     fArr.push(f)
 }
 
-export const 撤销通知 = (f:()=>void)=>{
-    fArr=fArr.filter(v=>v!=f)
+export const 撤销通知 = (f: () => void) => {
+    fArr = fArr.filter(v => v != f)
 }
 
-export const 发送通知 = ()=>{
-    fArr.forEach(v=>v())
+export const 发送通知 = () => {
+    fArr.forEach(v => v())
 }
 
 export const save = () =>

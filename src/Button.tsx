@@ -10,5 +10,5 @@ export const Button = (p: { text?: string, img?: string, backgroundColor?:string
       <img className='buttonImg' src={p.img} ></img>
     </button>
   }
-  return <button></button>
+  return <button className={p.className}></button>
 }

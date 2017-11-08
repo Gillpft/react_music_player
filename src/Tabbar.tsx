@@ -13,9 +13,9 @@ export const Tabbar = (p: {
 
   return (
     <div className='tabbar'>
-      <div className='PFTMusic'>Personal Music</div>
+      <div className='PFTMusic'>Exclusive</div>
       <Button text='音乐馆' className='buttonTabbarTrue' backgroundColor={p.backgroundColor1} onclick={() => p.changPage1()} />
-      <Button text='我的音乐' className='buttonTabbarFalse' backgroundColor={p.backgroundColor2} onclick={() => p.changPage2()} />
+      <Button text='爱收藏' className='buttonTabbarFalse' backgroundColor={p.backgroundColor2} onclick={() => p.changPage2()} />
     </div>
 
   );
