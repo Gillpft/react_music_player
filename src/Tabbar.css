@@ -4,42 +4,41 @@
   flex-direction: row;
   flex-wrap: nowrap;
   width: 100%;
-  height: 60%;
-  border-bottom: 1.5px white solid;
+  height: 50%;
   background-color: rgb(255, 255, 255);
   text-shadow: 0 0 0.5em pink, 0 0 0.5em pink,
   0 0 0.5em pink;  
 }
-  .PFTMusic{
-    float: left;
-    font-family: Chalkduster, fantasy;
-    font-size: 200%;
-    width: 30%;
-    margin-left: 20px;
-  }
-  .buttonTabbarTrue{
-    float: left;
-    height:100%;
-    width: 15%;
-    font-family: Impact, fantasy;
-    font-size: 150%;
-    border: 0 ;
-    outline: none;
-    border-radius: 15px 15px 0px 0px;
-    color:white;
-    text-shadow: 0 0 0.5em pink, 0 0 0.5em pink,
-    0 0 0.5em rgba(0, 0, 0, 0.5);
-  }
-  .buttonTabbarFalse{
-    float: left;
-    height:100%;
-    width: 15%;
-    font-family: Impact, fantasy;
-    font-size: 150%;
-    border-radius: 15px 15px 0px 0px;
-    border: 0 ;
-    outline: none;
-    color:white;
-    text-shadow: 0 0 0.5em pink, 0 0 0.5em pink,
-    0 0 0.5em rgba(0, 0, 0, 0.5);
-  }
+.PFTMusic{
+  float: left;
+  font-family: Chalkduster, fantasy;
+  font-size: 200%;
+  width: 30%;
+  margin-left: 20px;
+}
+.buttonTabbarTrue{
+  float: left;
+  height:100%;
+  width: 15%;
+  font-family: Impact, fantasy;
+  font-size: 150%;
+  border: 0 ;
+  outline: none;
+  border-radius: 15px 15px 0px 0px;
+  color:white;
+  text-shadow: 0 0 0.5em pink, 0 0 0.5em pink,
+  0 0 0.5em rgba(0, 0, 0, 0.5);
+}
+.buttonTabbarFalse{
+  float: left;
+  height:100%;
+  width: 15%;
+  font-family: Impact, fantasy;
+  font-size: 150%;
+  border-radius: 15px 15px 0px 0px;
+  border: 0 ;
+  outline: none;
+  color:white;
+  text-shadow: 0 0 0.5em pink, 0 0 0.5em pink,
+  0 0 0.5em rgba(0, 0, 0, 0.5);
+}

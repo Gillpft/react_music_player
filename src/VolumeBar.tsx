@@ -11,5 +11,4 @@ export const VolumeBar = (p: { onclick: () => void }) => {
             </div>
         </div>
     </div>
-
 }

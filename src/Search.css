@@ -5,16 +5,9 @@
   width: 100%;
   height: 100%;   
 }
-.SearchTop{
-  float: left;
-  height: 20%;
-  width: 100%;
-  display: flex;
-  flex-direction: column; 
-}
 .SearchTabbar{
   width: 80%;
-  height: 80px;
+  height: 15%;
   display: flex;
   flex-direction: row;
   align-items: flex-end;
@@ -22,7 +15,7 @@
 .SearchTopBox{
   float: left;
   width: 100%;
-  height: 200px;
+  height: 30%;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -53,5 +46,6 @@
 .SearchList{
   float: left;
   width: 100%;
-  margin-top: 30px;
+  
+  height: 55%;
 }  

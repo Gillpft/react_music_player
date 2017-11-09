@@ -7,7 +7,7 @@ import { Button } from './Button'
 
 import { search, Song, setMusicState } from './QQMusicAPI'
 
-import { like, dic,发送通知,注册通知,撤销通知 } from './gobal'
+import { like, dic, 发送通知, 注册通知, 撤销通知 } from './gobal'
 
 const S = {
     textSearch: '',
@@ -19,9 +19,13 @@ const S = {
 export class Search extends React.Component<{ myMusic: () => void, search: () => void }, typeof S>{
     f = () => {
         this.setState({
-            nowPlayID:dic.nowPlayID
+            ...S,
+            textSearch: dic.textSearch,
+            listSearch: dic.searchList,
+            collectIDs: dic.myCollect.map(v => v.songid),
+            nowPlayID: dic.nowPlayID
         })
-      }
+    }
     componentWillMount() {
         this.setState({
             ...S,
@@ -33,11 +37,11 @@ export class Search extends React.Component<{ myMusic: () => void, search: () =>
         this.change(dic.textSearch)
         注册通知(this.f)
     }
-  
+
     componentWillUnmount() {
-      撤销通知(this.f)
+        撤销通知(this.f)
     }
-  
+
     change(text: string) {
         this.setState({
             textSearch: text
@@ -49,6 +53,7 @@ export class Search extends React.Component<{ myMusic: () => void, search: () =>
             this.setState({ listSearch: list })
             dic.searchList = list
         })
+        发送通知()
     }
 
     collect(song: Song) {
@@ -58,7 +63,7 @@ export class Search extends React.Component<{ myMusic: () => void, search: () =>
                 collectIDs: this.state.collectIDs.filter(id => id != song.songid)
             })
             dic.myCollect = dic.myCollect.filter(v => v.songid != song.songid)
-            dic.isCollected = dic.myCollect.find(v=>v.songid==this.state.nowPlayID)!=null
+            dic.isCollected = dic.myCollect.find(v => v.songid == this.state.nowPlayID) != null
             发送通知()
         } else {
             //收藏
@@ -66,7 +71,7 @@ export class Search extends React.Component<{ myMusic: () => void, search: () =>
                 collectIDs: [...this.state.collectIDs, song.songid]
             })
             like(song)
-            dic.isCollected = dic.myCollect.find(v=>v.songid==this.state.nowPlayID)!=null
+            dic.isCollected = dic.myCollect.find(v => v.songid == this.state.nowPlayID) != null
             发送通知()
         }
     }
@@ -77,25 +82,23 @@ export class Search extends React.Component<{ myMusic: () => void, search: () =>
 
     render() {
         return <div className='Search'>
-            <div className='SearchTop'>
-                <div className='SearchTabbar'>
-                    <Tabbar
-                        changPage1={() => this.props.search()}
-                        changPage2={() => this.props.myMusic()}
-                        backgroundColor1='rgba(255, 192, 204, 0.7)'
-                        backgroundColor2='rgba(255, 192, 204, 0)' />
-                </div>
-                <div className='SearchTopBox'>
-                    <div className='SearchInputBox'>
-                        <input
-                            className='SearchTopInput'
-                            placeholder='想听什么歌'
-                            type="text" value={this.state.textSearch}
-                            onChange={v => this.change(v.target.value)} />
-                    </div>
+
+            <div className='SearchTabbar'>
+                <Tabbar
+                    changPage1={() => this.props.search()}
+                    changPage2={() => this.props.myMusic()}
+                    backgroundColor1='rgba(255, 192, 204, 0.7)'
+                    backgroundColor2='rgba(255, 192, 204, 0)' />
+            </div>
+            <div className='SearchTopBox'>
+                <div className='SearchInputBox'>
+                    <input
+                        className='SearchTopInput'
+                        placeholder='想听什么歌'
+                        type="text" value={this.state.textSearch}
+                        onChange={v => this.change(v.target.value)} />
                 </div>
             </div>
-
             <List
                 listClassName='SearchList'
                 list={this.state.listSearch}

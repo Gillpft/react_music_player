@@ -22,8 +22,9 @@ export class MyMusic extends React.Component<{ myMusic: () => void, search: () =
 
   f = () => {
     this.setState({
-      nowPlayImgURL: dic.nowPlayImgURL,
+      textSearch: dic.textSearch,
       collectList: dic.myCollect,
+      nowPlayImgURL: dic.nowPlayImgURL
     })
   }
 
@@ -47,9 +48,9 @@ export class MyMusic extends React.Component<{ myMusic: () => void, search: () =
     this.setState({
       collectList: dic.myCollect
     })
-    dic.isCollected = dic.myCollect.find(v=>v.songid==dic.nowPlayID)!=null
-    发送通知()
+    dic.isCollected = dic.myCollect.find(v => v.songid == dic.nowPlayID) != null
     save()
+    发送通知()
   }
 
   getcollect(song: Song) {
@@ -61,41 +62,36 @@ export class MyMusic extends React.Component<{ myMusic: () => void, search: () =
     this.setState({
       textSearch: dic.textSearch
     })
+    发送通知()
   }
 
   render() {
 
     return <div className='MyMusic'>
-      <div className='MyMusichead'>
-        <div className='MyMusicTop'>
-          <div className='MyMusicTabbar'>
-            <Tabbar
-              changPage1={() => this.props.search()}
-              changPage2={() => this.props.myMusic()}
-              backgroundColor1='rgba(128, 128, 128, 0)'
-              backgroundColor2='rgba(255, 192, 204, 0.7)' />
-          </div>
-          <SearchBox
-            placeholder='想听什么歌'
-            value={this.state.textSearch}
-            marginLeft={0}
-            marginTop={50}
-            onChange={v => this.onChange(v)}
-            search={() => this.props.search()} />
+      <div className='MyMusicTop'>
+        <div className='MyMusicTabbar'>
+          <Tabbar
+            changPage1={() => this.props.search()}
+            changPage2={() => this.props.myMusic()}
+            backgroundColor1='rgba(128, 128, 128, 0)'
+            backgroundColor2='rgba(255, 192, 204, 0.7)' />
         </div>
-        <div className='MyMusicBody'>
-          <List
-            listClassName='MyMusicList'
-            list={this.state.collectList}
-            collect={(v) => this.collect(v)}
-            getCollect={(v) => this.getcollect(v)} />
-          <div className='player' >
-            <ImgRotate songImg={this.state.nowPlayImgURL} />
-            <Lrc5Line />
-          </div>
-        </div>
-        <div className='MyMusicBottom'>
-          <Player/>
+        <SearchBox
+          placeholder='想听什么歌'
+          value={this.state.textSearch}
+          onChange={v => this.onChange(v)}
+          search={() => this.props.search()} />
+      </div>
+      <div className='MyMusicBody'>
+        <List
+          listClassName='MyMusicList'
+          list={this.state.collectList}
+          collect={(v) => this.collect(v)}
+          getCollect={(v) => this.getcollect(v)} />
+        <div className='player' >
+          <ImgRotate songImg={this.state.nowPlayImgURL} />
+          <Lrc5Line />
+          <Player />
         </div>
       </div>
     </div>

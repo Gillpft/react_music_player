@@ -45,7 +45,7 @@ export class Player extends React.Component<{}, typeof S>{
         this.setState({
             isPlaying: dic.isPlaying,
         }, () => {
-            setMusicState({ songid: dic.nowPlayID, playing: this.state.isPlaying })
+            setMusicState({ songid: dic.nowPlayID, playing: this.state.isPlaying,song:dic.myCollect })
             发送通知()
         })
     }
@@ -72,19 +72,13 @@ export class Player extends React.Component<{}, typeof S>{
 
     
     render() {
-        return <div className='Player'>
-            <div className='PlayerButton'>
+        return <div className='PlayerButton'>
                 <Button text='|<<' className='button1' onclick={() => changeSong(this.state.nowPlayID,-1)} />
                 <Button img={this.state.isPlaying ? 'stop.png' : 'play.png'} className='button2' onclick={() => this.play()} />
                 <Button text='>>|' className='button1' onclick={() => changeSong(this.state.nowPlayID,1)} />
-            </div>
-            <div className='PlayerBar' >
-                <ProgressBar time={60} onclick={() => alert(123)} />
-                <VolumeBar onclick={() => alert(123)} />
-            </div >
-            <div className='Playerset'>
                 <Button img={this.state.isCollected ? 'collect.png' : 'discollect.png'} className='buttonList' onclick={() => this.collect(this.state.nowPlayID)} />
+
             </div>
-        </div>
+
     }
 }             

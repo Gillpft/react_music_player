@@ -25,20 +25,19 @@ export const like = (song: Song) => {
 
 
 
-export const changeSong = (songid: number,a:number) => {
+export const changeSong = (songid: number, a: number) => {
     const song = dic.myCollect.find(v => v.songid == songid)
     if (song != null) {
         const index = dic.myCollect.indexOf(song) + a
-        if (index < dic.myCollect.length) {
-            const nowPlaySong = dic.myCollect.find((v, i) =>
-                i == (dic.myCollect.indexOf(song) + a))
+        if (index < dic.myCollect.length && index >= 0) {
+            const nowPlaySong = dic.myCollect.find((v, i) => i == (dic.myCollect.indexOf(song) + a))
             dic.nowPlaySong = nowPlaySong
             dic.nowPlayID = nowPlaySong.songid
             dic.nowPlayImgURL = nowPlaySong.albumImageURL
             dic.nowPlaySongName = nowPlaySong.songname
-        }
-    }
-    setMusicState({ songid: song.songid, playing: dic.isPlaying })
+            setMusicState({ songid: dic.nowPlayID, playing: dic.isPlaying, song: dic.myCollect })
+        } else { setMusicState({ songid: dic.nowPlayID, playing: dic.isPlaying, song: dic.myCollect }) }
+    } else { setMusicState({ songid: dic.nowPlayID, playing: dic.isPlaying, song: dic.myCollect }) }
     发送通知()
 }
 

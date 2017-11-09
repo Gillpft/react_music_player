@@ -113,7 +113,7 @@ const getCurrentTime = () => audio.currentTime
 const getDuration = () => audio.duration
 const getLrc = () => lrcArr.xxx
 
-export const setMusicState = (s: { songid: number, playing: boolean }) => {
+export const setMusicState = (s: { songid: number, playing: boolean,song:Song[] }) => {
 
     if (audio.src != `http://ws.stream.qqmusic.qq.com/${s.songid}.m4a?fromtag=46`) {
         audio.src = `http://ws.stream.qqmusic.qq.com/${s.songid}.m4a?fromtag=46`

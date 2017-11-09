@@ -1,20 +1,12 @@
-.Player{
-    float: left;
-    width: 100%;
-    height: 100%;
-    display: flex; 
-    flex-direction: row;
-    justify-content: flex-start;
-}
+
 .PlayerButton{
-    float: left;
-    margin-left: 10%; 
-    width: 25%;
+    float: center;
+    width: 100%;
+    height: 50%;
     display: flex; 
     flex-direction: row;
     justify-content: space-around;
 }
-
 .button1{
     float: center;
     height: 100%;
@@ -31,13 +23,4 @@
     border: 0;
     background: rgba(0, 0, 0, 0);
     outline: none;
-  }
-.PlayerBar{
-    float: center;
-    width: 60%;
-    display: flex;
-    flex-direction: row;
-}
-.Playerset{
-    float: left;
 }

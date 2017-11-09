@@ -16,6 +16,8 @@ const S = {
 export class List extends React.Component<{ listClassName: string, list: Song[], collect: (v: Song) => void, getCollect: (v: Song) => boolean }, typeof S>{
   f = () => {
     this.setState({
+      nowPlayID: dic.nowPlayID,
+      nowPlayImgURL: dic.nowPlayImgURL,
       isPlaying: dic.isPlaying
     })
   }
@@ -39,7 +41,7 @@ export class List extends React.Component<{ listClassName: string, list: Song[],
       nowPlayImgURL: song.albumImageURL,
       isPlaying: song.songid == this.state.nowPlayID && this.state.isPlaying ? false : true
     }, () => {
-      setMusicState({ songid: song.songid, playing: this.state.isPlaying })
+      setMusicState({ songid: song.songid, playing: this.state.isPlaying, song:dic.myCollect })
       dic.nowPlayID = song.songid
       dic.nowPlayImgURL = song.albumImageURL
       dic.isPlaying = this.state.isPlaying

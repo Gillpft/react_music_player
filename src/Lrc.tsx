@@ -3,19 +3,6 @@ import './Lrc.css'
 
 import { createLRC } from './QQMusicAPI'
 
-
-/*
-生命周期
-高阶组件
-this
-全局状态改变通知
-不可变数据
-函数式编程
-flux
-setState
-key
-*/
-
 export const LrcScroll = createLRC(p => <div className="Lrc">
     {
         p.lrc.map((v, index) =>

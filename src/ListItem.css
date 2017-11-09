@@ -8,20 +8,18 @@
   width: 100%;
   height: auto;
 }
-  
-  .songText{
-    float: left;
-    width: 35%;
-    height: 80%;
-    text-align: left;
-  }
-  .buttonList{
-    float: right;
-    height: 100%;
-    width: 5%;
-    border: 0;
-    background: rgba(0, 0, 0, 0);
-    outline: none;
-    margin-right:5%;
-  }
-  
+.songText{
+  float: left;
+  width: 35%;
+  height: 80%;
+  text-align: left;
+}
+.buttonList{
+  float: right;
+  height: 100%;
+  width: 5%;
+  border: 0;
+  background: rgba(0, 0, 0, 0);
+  outline: none;
+  margin-right:5%;
+}

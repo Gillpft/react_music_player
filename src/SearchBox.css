@@ -1,16 +1,15 @@
-/*组件searchBox*/
 .searchBox{
   float: left;
   display: flex;
   flex-direction:row;
   justify-content: space-around;
   align-items: center;
-  height: 50%;
+  height: 35px;
   width: 15%;
   margin-right: 5%;
+  margin-top: 5%;
   border: 1px rgba(128, 128, 128, 0.3) solid;
   border-radius: 8px;
-  
 }
 
 .SearchBoxbutton{
