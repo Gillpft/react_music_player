@@ -5,7 +5,7 @@ import { ListItem } from './ListItem'
 
 import { search, Song, setMusicState } from './QQMusicAPI'
 
-import { like, dic, publish, subscribe,unsubscribe } from './gobal'
+import { like, store, publish, subscribe,unsubscribe } from './gobal'
 
 const S = {
   nowPlayID: -1, //当前播放的歌曲id
@@ -16,17 +16,17 @@ const S = {
 export class List extends React.Component<{ listClassName: string, list: Song[], collect: (v: Song) => void, getCollect: (v: Song) => boolean }, typeof S>{
   f = () => {
     this.setState({
-      nowPlayID: dic.nowPlayID,
-      nowPlayImgURL: dic.nowPlayImgURL,
-      isPlaying: dic.isPlaying
+      nowPlayID: store.nowPlayID,
+      nowPlayImgURL: store.nowPlayImgURL,
+      isPlaying: store.isPlaying
     })
   }
   componentWillMount() {
     this.setState({
       ...S,
-      nowPlayID: dic.nowPlayID,
-      nowPlayImgURL: dic.nowPlayImgURL,
-      isPlaying: dic.isPlaying,
+      nowPlayID: store.nowPlayID,
+      nowPlayImgURL: store.nowPlayImgURL,
+      isPlaying: store.isPlaying,
     })
     subscribe(this.f)
   }
@@ -41,13 +41,13 @@ export class List extends React.Component<{ listClassName: string, list: Song[],
       nowPlayImgURL: song.albumImageURL,
       isPlaying: song.songid == this.state.nowPlayID && this.state.isPlaying ? false : true
     }, () => {
-      setMusicState({ songid: song.songid, playing: this.state.isPlaying, song:dic.myCollect })
-      dic.nowPlayID = song.songid
-      dic.nowPlayImgURL = song.albumImageURL
-      dic.isPlaying = this.state.isPlaying
-      dic.nowPlaySongName = song.songname
-      dic.nowPlaySong = song
-      dic.isCollected = dic.myCollect.find(v=>v.songid==this.state.nowPlayID)!=null
+      setMusicState({ songid: song.songid, playing: this.state.isPlaying, song:store.myCollect })
+      store.nowPlayID = song.songid
+      store.nowPlayImgURL = song.albumImageURL
+      store.isPlaying = this.state.isPlaying
+      store.nowPlaySongName = song.songname
+      store.nowPlaySong = song
+      store.isCollected = store.myCollect.find(v=>v.songid==this.state.nowPlayID)!=null
       publish()
     })
   }

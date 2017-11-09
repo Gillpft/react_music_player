@@ -7,7 +7,7 @@ import { Button } from './Button'
 
 import { search, Song, setMusicState } from './QQMusicAPI'
 
-import { like, dic, publish, subscribe, unsubscribe } from './gobal'
+import { like, store, publish, subscribe, unsubscribe } from './gobal'
 
 const S = {
     textSearch: '',
@@ -20,21 +20,21 @@ export class Search extends React.Component<{ myMusic: () => void, search: () =>
     f = () => {
         this.setState({
             ...S,
-            textSearch: dic.textSearch,
-            listSearch: dic.searchList,
-            collectIDs: dic.myCollect.map(v => v.songid),
-            nowPlayID: dic.nowPlayID
+            textSearch: store.textSearch,
+            listSearch: store.searchList,
+            collectIDs: store.myCollect.map(v => v.songid),
+            nowPlayID: store.nowPlayID
         })
     }
     componentWillMount() {
         this.setState({
             ...S,
-            textSearch: dic.textSearch,
-            listSearch: dic.searchList,
-            collectIDs: dic.myCollect.map(v => v.songid),
-            nowPlayID: dic.nowPlayID
+            textSearch: store.textSearch,
+            listSearch: store.searchList,
+            collectIDs: store.myCollect.map(v => v.songid),
+            nowPlayID: store.nowPlayID
         })
-        this.change(dic.textSearch)
+        this.change(store.textSearch)
         subscribe(this.f)
     }
 
@@ -47,11 +47,11 @@ export class Search extends React.Component<{ myMusic: () => void, search: () =>
             textSearch: text
         })
 
-        dic.textSearch = text
+        store.textSearch = text
 
         search(text, list => {
             this.setState({ listSearch: list })
-            dic.searchList = list
+            store.searchList = list
         })
         publish()
     }
@@ -62,8 +62,8 @@ export class Search extends React.Component<{ myMusic: () => void, search: () =>
             this.setState({
                 collectIDs: this.state.collectIDs.filter(id => id != song.songid)
             })
-            dic.myCollect = dic.myCollect.filter(v => v.songid != song.songid)
-            dic.isCollected = dic.myCollect.find(v => v.songid == this.state.nowPlayID) != null
+            store.myCollect = store.myCollect.filter(v => v.songid != song.songid)
+            store.isCollected = store.myCollect.find(v => v.songid == this.state.nowPlayID) != null
             publish()
         } else {
             //收藏
@@ -71,7 +71,7 @@ export class Search extends React.Component<{ myMusic: () => void, search: () =>
                 collectIDs: [...this.state.collectIDs, song.songid]
             })
             like(song)
-            dic.isCollected = dic.myCollect.find(v => v.songid == this.state.nowPlayID) != null
+            store.isCollected = store.myCollect.find(v => v.songid == this.state.nowPlayID) != null
             publish()
         }
     }

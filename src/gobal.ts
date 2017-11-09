@@ -1,7 +1,7 @@
 import { search, Song, setMusicState } from './QQMusicAPI'
 
 
-export const dic = {
+export const store = {
     searchList: [] as Song[],
     myCollect: [] as Song[],
     nowPlayID: -1,
@@ -17,8 +17,8 @@ export const dic = {
 
 
 export const like = (song: Song) => {
-    if (dic.myCollect.find(v => v.songid == song.songid) == null) {
-        dic.myCollect.push(song)
+    if (store.myCollect.find(v => v.songid == song.songid) == null) {
+        store.myCollect.push(song)
     }
     save()
 }
@@ -26,18 +26,18 @@ export const like = (song: Song) => {
 
 
 export const changeSong = (songid: number, a: number) => {
-    const song = dic.myCollect.find(v => v.songid == songid)
+    const song = store.myCollect.find(v => v.songid == songid)
     if (song != null) {
-        const index = dic.myCollect.indexOf(song) + a
-        if (index < dic.myCollect.length && index >= 0) {
-            const nowPlaySong = dic.myCollect.find((v, i) => i == (dic.myCollect.indexOf(song) + a))
-            dic.nowPlaySong = nowPlaySong
-            dic.nowPlayID = nowPlaySong.songid
-            dic.nowPlayImgURL = nowPlaySong.albumImageURL
-            dic.nowPlaySongName = nowPlaySong.songname
-            setMusicState({ songid: dic.nowPlayID, playing: dic.isPlaying, song: dic.myCollect })
-        } else { setMusicState({ songid: dic.nowPlayID, playing: dic.isPlaying, song: dic.myCollect }) }
-    } else { setMusicState({ songid: dic.nowPlayID, playing: dic.isPlaying, song: dic.myCollect }) }
+        const index = store.myCollect.indexOf(song) + a
+        if (index < store.myCollect.length && index >= 0) {
+            const nowPlaySong = store.myCollect.find((v, i) => i == (store.myCollect.indexOf(song) + a))
+            store.nowPlaySong = nowPlaySong
+            store.nowPlayID = nowPlaySong.songid
+            store.nowPlayImgURL = nowPlaySong.albumImageURL
+            store.nowPlaySongName = nowPlaySong.songname
+            setMusicState({ songid: store.nowPlayID, playing: store.isPlaying, song: store.myCollect })
+        } else { setMusicState({ songid: store.nowPlayID, playing: store.isPlaying, song: store.myCollect }) }
+    } else { setMusicState({ songid: store.nowPlayID, playing: store.isPlaying, song: store.myCollect }) }
     publish()
 }
 
@@ -56,11 +56,11 @@ export const publish = () => {
 }
 
 export const save = () =>
-    localStorage.setItem('myCollect', JSON.stringify(dic.myCollect))
+    localStorage.setItem('myCollect', JSON.stringify(store.myCollect))
 
 export const load = () => {
     let arr = JSON.parse(localStorage.getItem('myCollect'))
-    dic.myCollect = arr ? arr : []
+    store.myCollect = arr ? arr : []
 }
 
 load()

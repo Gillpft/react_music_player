@@ -6,7 +6,7 @@ import { ProgressBar } from './ProgressBar'
 import { VolumeBar } from './VolumeBar'
 import { search, Song, setMusicState } from './QQMusicAPI'
 
-import { like, dic, subscribe, unsubscribe, publish, save, changeSong } from './gobal'
+import { like, store, subscribe, unsubscribe, publish, save, changeSong } from './gobal'
 
 const S = {
     isPlaying: false,
@@ -18,20 +18,20 @@ const S = {
 export class Player extends React.Component<{}, typeof S>{
     f = () => {
         this.setState({
-            isPlaying: dic.isPlaying,
-            nowPlaySongName: dic.nowPlaySongName,
-            nowPlayID: dic.nowPlayID,
-            isCollected: dic.isCollected
+            isPlaying: store.isPlaying,
+            nowPlaySongName: store.nowPlaySongName,
+            nowPlayID: store.nowPlayID,
+            isCollected: store.isCollected
         })
     }
 
     componentWillMount() {
         this.setState({
             ...S,
-            nowPlaySongName: dic.nowPlaySongName,
-            nowPlayID: dic.nowPlayID,
-            isPlaying: dic.isPlaying,
-            isCollected: dic.isCollected
+            nowPlaySongName: store.nowPlaySongName,
+            nowPlayID: store.nowPlayID,
+            isPlaying: store.isPlaying,
+            isCollected: store.isCollected
         })
         subscribe(this.f)
     }
@@ -41,11 +41,11 @@ export class Player extends React.Component<{}, typeof S>{
     }
 
     play() {
-        dic.isPlaying = !dic.isPlaying
+        store.isPlaying = !store.isPlaying
         this.setState({
-            isPlaying: dic.isPlaying,
+            isPlaying: store.isPlaying,
         }, () => {
-            setMusicState({ songid: dic.nowPlayID, playing: this.state.isPlaying,song:dic.myCollect })
+            setMusicState({ songid: store.nowPlayID, playing: this.state.isPlaying,song:store.myCollect })
             publish()
         })
     }
@@ -54,18 +54,18 @@ export class Player extends React.Component<{}, typeof S>{
         if (this.state.isCollected) {
             //取消收藏
             this.setState({
-                isCollected:dic.isCollected
+                isCollected:store.isCollected
             })
-            dic.myCollect = dic.myCollect.filter(v => v.songid != songid)
-            dic.isCollected=!dic.isCollected
+            store.myCollect = store.myCollect.filter(v => v.songid != songid)
+            store.isCollected=!store.isCollected
             publish()
         } else {
             //收藏
             this.setState({
-                isCollected:dic.isCollected
+                isCollected:store.isCollected
             })
-            like(dic.nowPlaySong)
-            dic.isCollected=!dic.isCollected
+            like(store.nowPlaySong)
+            store.isCollected=!store.isCollected
             publish()
         }
     }

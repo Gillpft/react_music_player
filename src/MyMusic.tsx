@@ -10,7 +10,7 @@ import { ImgRotate } from './ImgRotate'
 import { Player } from './Player'
 
 import { search, Song, setMusicState } from './QQMusicAPI'
-import { like, dic, publish, subscribe, unsubscribe, save } from './gobal'
+import { like, store, publish, subscribe, unsubscribe, save } from './gobal'
 
 const S = {
   textSearch: '',
@@ -22,18 +22,18 @@ export class MyMusic extends React.Component<{ myMusic: () => void, search: () =
 
   f = () => {
     this.setState({
-      textSearch: dic.textSearch,
-      collectList: dic.myCollect,
-      nowPlayImgURL: dic.nowPlayImgURL
+      textSearch: store.textSearch,
+      collectList: store.myCollect,
+      nowPlayImgURL: store.nowPlayImgURL
     })
   }
 
   componentWillMount() {
     this.setState({
       ...S,
-      textSearch: dic.textSearch,
-      collectList: dic.myCollect,
-      nowPlayImgURL: dic.nowPlayImgURL
+      textSearch: store.textSearch,
+      collectList: store.myCollect,
+      nowPlayImgURL: store.nowPlayImgURL
     })
     subscribe(this.f)
   }
@@ -44,11 +44,11 @@ export class MyMusic extends React.Component<{ myMusic: () => void, search: () =
 
   collect(song: Song) {
     //取消收藏
-    dic.myCollect = dic.myCollect.filter(v => v.songid != song.songid)
+    store.myCollect = store.myCollect.filter(v => v.songid != song.songid)
     this.setState({
-      collectList: dic.myCollect
+      collectList: store.myCollect
     })
-    dic.isCollected = dic.myCollect.find(v => v.songid == dic.nowPlayID) != null
+    store.isCollected = store.myCollect.find(v => v.songid == store.nowPlayID) != null
     save()
     publish()
   }
@@ -58,9 +58,9 @@ export class MyMusic extends React.Component<{ myMusic: () => void, search: () =
   }
 
   onChange(text: string) {
-    dic.textSearch = text
+    store.textSearch = text
     this.setState({
-      textSearch: dic.textSearch
+      textSearch: store.textSearch
     })
     publish()
   }
