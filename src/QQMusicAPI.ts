@@ -124,7 +124,7 @@ export const setMusicState = (s: { songid: number, playing: boolean, song: Song[
         isPlaying = false
         searchLRC(s.songid)
 
-        
+
         if (aaa != null) {
             clearTimeout(aaa)
             aaa = null
@@ -170,15 +170,10 @@ export const createLRC = (func: (p: { index: number, lrc: string[] }) => JSX.Ele
 
         }
 
-        if (index != -1 && this.state.index != index) {
-
-            this.setState({
-                index: index,
-                lrc: arr.map(v => v.lrc)
-            })
-        }
-
-
+        this.setState({
+            index: index,
+            lrc: arr.map(v => v.lrc)
+        })
 
         if (this.cancel == false) {
             requestAnimationFrame(() => this.onFrame())
