@@ -6,7 +6,7 @@ import { ProgressBar } from './ProgressBar'
 import { VolumeBar } from './VolumeBar'
 import { search, Song, setMusicState } from './QQMusicAPI'
 
-import { like, dic, 注册通知, 撤销通知, 发送通知, save, changeSong } from './gobal'
+import { like, dic, subscribe, unsubscribe, publish, save, changeSong } from './gobal'
 
 const S = {
     isPlaying: false,
@@ -33,11 +33,11 @@ export class Player extends React.Component<{}, typeof S>{
             isPlaying: dic.isPlaying,
             isCollected: dic.isCollected
         })
-        注册通知(this.f)
+        subscribe(this.f)
     }
 
     componentWillUnmount() {
-        撤销通知(this.f)
+        unsubscribe(this.f)
     }
 
     play() {
@@ -46,7 +46,7 @@ export class Player extends React.Component<{}, typeof S>{
             isPlaying: dic.isPlaying,
         }, () => {
             setMusicState({ songid: dic.nowPlayID, playing: this.state.isPlaying,song:dic.myCollect })
-            发送通知()
+            publish()
         })
     }
     collect(songid: number) {
@@ -58,7 +58,7 @@ export class Player extends React.Component<{}, typeof S>{
             })
             dic.myCollect = dic.myCollect.filter(v => v.songid != songid)
             dic.isCollected=!dic.isCollected
-            发送通知()
+            publish()
         } else {
             //收藏
             this.setState({
@@ -66,7 +66,7 @@ export class Player extends React.Component<{}, typeof S>{
             })
             like(dic.nowPlaySong)
             dic.isCollected=!dic.isCollected
-            发送通知()
+            publish()
         }
     }
 

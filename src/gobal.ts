@@ -38,20 +38,20 @@ export const changeSong = (songid: number, a: number) => {
             setMusicState({ songid: dic.nowPlayID, playing: dic.isPlaying, song: dic.myCollect })
         } else { setMusicState({ songid: dic.nowPlayID, playing: dic.isPlaying, song: dic.myCollect }) }
     } else { setMusicState({ songid: dic.nowPlayID, playing: dic.isPlaying, song: dic.myCollect }) }
-    发送通知()
+    publish()
 }
 
 let fArr = [] as (() => void)[]
 
-export const 注册通知 = (f: () => void) => {
+export const subscribe = (f: () => void) => {
     fArr.push(f)
 }
 
-export const 撤销通知 = (f: () => void) => {
+export const unsubscribe = (f: () => void) => {
     fArr = fArr.filter(v => v != f)
 }
 
-export const 发送通知 = () => {
+export const publish = () => {
     fArr.forEach(v => v())
 }
 

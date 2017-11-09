@@ -7,7 +7,7 @@ import { Button } from './Button'
 
 import { search, Song, setMusicState } from './QQMusicAPI'
 
-import { like, dic, 发送通知, 注册通知, 撤销通知 } from './gobal'
+import { like, dic, publish, subscribe, unsubscribe } from './gobal'
 
 const S = {
     textSearch: '',
@@ -35,11 +35,11 @@ export class Search extends React.Component<{ myMusic: () => void, search: () =>
             nowPlayID: dic.nowPlayID
         })
         this.change(dic.textSearch)
-        注册通知(this.f)
+        subscribe(this.f)
     }
 
     componentWillUnmount() {
-        撤销通知(this.f)
+        unsubscribe(this.f)
     }
 
     change(text: string) {
@@ -53,7 +53,7 @@ export class Search extends React.Component<{ myMusic: () => void, search: () =>
             this.setState({ listSearch: list })
             dic.searchList = list
         })
-        发送通知()
+        publish()
     }
 
     collect(song: Song) {
@@ -64,7 +64,7 @@ export class Search extends React.Component<{ myMusic: () => void, search: () =>
             })
             dic.myCollect = dic.myCollect.filter(v => v.songid != song.songid)
             dic.isCollected = dic.myCollect.find(v => v.songid == this.state.nowPlayID) != null
-            发送通知()
+            publish()
         } else {
             //收藏
             this.setState({
@@ -72,7 +72,7 @@ export class Search extends React.Component<{ myMusic: () => void, search: () =>
             })
             like(song)
             dic.isCollected = dic.myCollect.find(v => v.songid == this.state.nowPlayID) != null
-            发送通知()
+            publish()
         }
     }
 

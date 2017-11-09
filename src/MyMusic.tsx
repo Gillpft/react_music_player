@@ -10,7 +10,7 @@ import { ImgRotate } from './ImgRotate'
 import { Player } from './Player'
 
 import { search, Song, setMusicState } from './QQMusicAPI'
-import { like, dic, 发送通知, 注册通知, 撤销通知, save } from './gobal'
+import { like, dic, publish, subscribe, unsubscribe, save } from './gobal'
 
 const S = {
   textSearch: '',
@@ -35,11 +35,11 @@ export class MyMusic extends React.Component<{ myMusic: () => void, search: () =
       collectList: dic.myCollect,
       nowPlayImgURL: dic.nowPlayImgURL
     })
-    注册通知(this.f)
+    subscribe(this.f)
   }
 
   componentWillUnmount() {
-    撤销通知(this.f)
+    unsubscribe(this.f)
   }
 
   collect(song: Song) {
@@ -50,7 +50,7 @@ export class MyMusic extends React.Component<{ myMusic: () => void, search: () =
     })
     dic.isCollected = dic.myCollect.find(v => v.songid == dic.nowPlayID) != null
     save()
-    发送通知()
+    publish()
   }
 
   getcollect(song: Song) {
@@ -62,7 +62,7 @@ export class MyMusic extends React.Component<{ myMusic: () => void, search: () =
     this.setState({
       textSearch: dic.textSearch
     })
-    发送通知()
+    publish()
   }
 
   render() {
