@@ -2,9 +2,9 @@
   float: left;
   display: flex;
   flex-direction: row;
-  flex-wrap: nowrap;
+  align-items: flex-end;
   width: 100%;
-  height: 50%;
+  height:85px;
   background-color: rgb(255, 255, 255);
   text-shadow: 0 0 0.5em pink, 0 0 0.5em pink,
   0 0 0.5em pink;  
@@ -13,13 +13,14 @@
   float: left;
   font-family: Chalkduster, fantasy;
   font-size: 200%;
-  width: 30%;
+  width: 200px;
+  height: 40px;
   margin-left: 20px;
 }
 .buttonTabbarTrue{
   float: left;
-  height:100%;
-  width: 15%;
+  height:40px;
+  width: 110px;
   font-family: Impact, fantasy;
   font-size: 150%;
   border: 0 ;
@@ -31,8 +32,8 @@
 }
 .buttonTabbarFalse{
   float: left;
-  height:100%;
-  width: 15%;
+  height:40px;
+  width: 110px;
   font-family: Impact, fantasy;
   font-size: 150%;
   border-radius: 15px 15px 0px 0px;
