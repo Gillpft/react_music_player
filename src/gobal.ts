@@ -68,7 +68,7 @@ load()
 
 audio.onended = () => {
     //播放完成
+    changeSong(store.nowPlayID,1)
 
-    
 }
 

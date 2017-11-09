@@ -115,12 +115,24 @@ const getCurrentTime = () => audio.currentTime
 const getDuration = () => audio.duration
 const getLrc = () => lrcArr.xxx
 
+let aaa: any = null
+
 export const setMusicState = (s: { songid: number, playing: boolean, song: Song[] }) => {
 
     if (audio.src != `http://ws.stream.qqmusic.qq.com/${s.songid}.m4a?fromtag=46`) {
         audio.src = `http://ws.stream.qqmusic.qq.com/${s.songid}.m4a?fromtag=46`
         isPlaying = false
         searchLRC(s.songid)
+
+        
+        if (aaa != null) {
+            clearTimeout(aaa)
+            aaa = null
+        }
+        aaa = setTimeout(() => {
+            aaa = null
+            audio.onended({} as any)
+        }, 3000);
     }
 
     if (s.playing) {
