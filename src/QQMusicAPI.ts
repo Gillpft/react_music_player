@@ -105,15 +105,17 @@ const searchLRC = (songid: number) => {
 
 
 
-let audio = new Audio()
+export const audio = new Audio()
 audio.loop = true
 let isPlaying = false
+
+
 
 const getCurrentTime = () => audio.currentTime
 const getDuration = () => audio.duration
 const getLrc = () => lrcArr.xxx
 
-export const setMusicState = (s: { songid: number, playing: boolean,song:Song[] }) => {
+export const setMusicState = (s: { songid: number, playing: boolean, song: Song[] }) => {
 
     if (audio.src != `http://ws.stream.qqmusic.qq.com/${s.songid}.m4a?fromtag=46`) {
         audio.src = `http://ws.stream.qqmusic.qq.com/${s.songid}.m4a?fromtag=46`

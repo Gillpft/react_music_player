@@ -1,4 +1,4 @@
-import { search, Song, setMusicState } from './QQMusicAPI'
+import { search, Song, setMusicState, audio } from './QQMusicAPI'
 
 
 export const store = {
@@ -64,4 +64,11 @@ export const load = () => {
 }
 
 load()
+
+
+audio.onended = () => {
+    //播放完成
+
+    
+}
 
