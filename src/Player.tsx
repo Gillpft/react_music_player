@@ -76,8 +76,8 @@ export class Player extends React.Component<{}, typeof S>{
                 <Button text='|<<' className='button1' onclick={() => changeSong(this.state.nowPlayID,-1)} />
                 <Button img={this.state.isPlaying ? 'stop.png' : 'play.png'} className='button2' onclick={() => this.play()} />
                 <Button text='>>|' className='button1' onclick={() => changeSong(this.state.nowPlayID,1)} />
-                <Button img={this.state.isCollected ? 'collect.png' : 'discollect.png'} className='buttonList' onclick={() => this.collect(this.state.nowPlayID)} />
-
+                {this.state.nowPlayID==-1?   <h6></h6>:
+                <Button img={this.state.isCollected ? 'collect.png' : 'discollect.png'} className='buttonList' onclick={() => this.collect(this.state.nowPlayID)} />}
             </div>
 
     }
