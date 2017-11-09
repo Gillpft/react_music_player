@@ -25,12 +25,12 @@ export const like = (song: Song) => {
 
 
 
-export const changeSong = (songid: number, a: number) => {
+export const changeSong = (songid: number, pos: number) => {
     const song = store.myCollect.find(v => v.songid == songid)
     if (song != null) {
-        const index = store.myCollect.indexOf(song) + a
+        const index = store.myCollect.indexOf(song) + pos
         if (index < store.myCollect.length && index >= 0) {
-            const nowPlaySong = store.myCollect.find((v, i) => i == (store.myCollect.indexOf(song) + a))
+            const nowPlaySong = store.myCollect.find((v, i) => i == (store.myCollect.indexOf(song) + pos))
             store.nowPlaySong = nowPlaySong
             store.nowPlayID = nowPlaySong.songid
             store.nowPlayImgURL = nowPlaySong.albumImageURL
