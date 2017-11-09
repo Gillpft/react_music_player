@@ -124,7 +124,7 @@ export const setMusicState = (s: { songid: number, playing: boolean, song: Song[
         isPlaying = false
         searchLRC(s.songid)
 
-
+        //!!!!!!!!
         if (aaa != null) {
             clearTimeout(aaa)
             aaa = null
@@ -133,6 +133,8 @@ export const setMusicState = (s: { songid: number, playing: boolean, song: Song[
             aaa = null
             audio.onended({} as any)
         }, 3000);
+        //!!!!!!!!
+
     }
 
     if (s.playing) {
