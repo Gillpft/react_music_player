@@ -2,8 +2,7 @@ import * as React from 'react'
 import './Player.css'
 
 import { Button } from './Button'
-import { ProgressBar } from './ProgressBar'
-import { VolumeBar } from './VolumeBar'
+
 import { search, Song, setMusicState } from './QQMusicAPI'
 
 import { like, store, subscribe, unsubscribe, publish, save, changeSong } from './gobal'

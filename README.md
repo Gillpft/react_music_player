@@ -1,12 +1,12 @@
 # react music player
-## 预览
+## Preview
 - [https://gillpft.github.io/](https://gillpft.github.io/)
 
-## 技术栈
+## Technology Stack
 - react 
 - create-react-app
 - typescript 
 - tslint
 - flex layout
-- 全局状态管理
-- 函数式编程
+- global status management
+- functional programming
