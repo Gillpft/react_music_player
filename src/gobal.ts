@@ -18,7 +18,7 @@ export const store = {
 
 export const like = (song: Song) => {
     if (store.myCollect.find(v => v.songid == song.songid) == null) {
-        store.myCollect.push(song)
+        store.myCollect = [song, ...store.myCollect]
     }
     save()
 }
@@ -68,7 +68,7 @@ load()
 
 audio.onended = () => {
     //播放完成
-    changeSong(store.nowPlayID,1)
+    changeSong(store.nowPlayID, 1)
 
 }
 
