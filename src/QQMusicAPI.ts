@@ -106,7 +106,6 @@ const searchLRC = (songid: number) => {
 
 
 export const audio = new Audio()
-audio.loop = true
 let isPlaying = false
 
 
