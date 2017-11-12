@@ -38,16 +38,16 @@ export const changeSong = (songid: number, pos: number) => {
             setMusicState({ songid: store.nowPlayID, playing: store.isPlaying, song: store.myCollect })
         } else { setMusicState({ songid: store.nowPlayID, playing: store.isPlaying, song: store.myCollect }) }
     } else { setMusicState({ songid: store.nowPlayID, playing: store.isPlaying, song: store.myCollect }) }
-    publish()
+    callAllFunc()
 }
 
 let fArr = [] as (() => void)[]
 
-export const subscribe = (f: () => void) => fArr.push(f)
+export const pushFunc = (f: () => void) => fArr.push(f)
 
-export const unsubscribe = (f: () => void) => fArr = fArr.filter(v => v != f)
+export const removeFunc = (f: () => void) => fArr = fArr.filter(v => v != f)
 
-export const publish = () => fArr.forEach(v => v())
+export const callAllFunc = () => fArr.forEach(v => v())
 
 
 export const save = () =>

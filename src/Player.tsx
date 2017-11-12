@@ -5,7 +5,7 @@ import { Button } from './Button'
 
 import { search, Song, setMusicState } from './QQMusicAPI'
 
-import { like, store, subscribe, unsubscribe, publish, save, changeSong } from './gobal'
+import { like, store, pushFunc, removeFunc, callAllFunc, save, changeSong } from './gobal'
 
 const S = {
     isPlaying: false,
@@ -32,11 +32,11 @@ export class Player extends React.Component<{}, typeof S>{
             isPlaying: store.isPlaying,
             isCollected: store.isCollected
         })
-        subscribe(this.f)
+        pushFunc(this.f)
     }
 
     componentWillUnmount() {
-        unsubscribe(this.f)
+        removeFunc(this.f)
     }
 
     play() {
@@ -45,7 +45,7 @@ export class Player extends React.Component<{}, typeof S>{
             isPlaying: store.isPlaying,
         }, () => {
             setMusicState({ songid: store.nowPlayID, playing: this.state.isPlaying,song:store.myCollect })
-            publish()
+            callAllFunc()
         })
     }
     collect(songid: number) {
@@ -57,7 +57,7 @@ export class Player extends React.Component<{}, typeof S>{
             })
             store.myCollect = store.myCollect.filter(v => v.songid != songid)
             store.isCollected=!store.isCollected
-            publish()
+            callAllFunc()
         } else {
             //收藏
             this.setState({
@@ -65,7 +65,7 @@ export class Player extends React.Component<{}, typeof S>{
             })
             like(store.nowPlaySong)
             store.isCollected=!store.isCollected
-            publish()
+            callAllFunc()
         }
     }
 
