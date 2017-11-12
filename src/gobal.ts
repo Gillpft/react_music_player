@@ -43,17 +43,12 @@ export const changeSong = (songid: number, pos: number) => {
 
 let fArr = [] as (() => void)[]
 
-export const subscribe = (f: () => void) => {
-    fArr.push(f)
-}
+export const subscribe = (f: () => void) => fArr.push(f)
 
-export const unsubscribe = (f: () => void) => {
-    fArr = fArr.filter(v => v != f)
-}
+export const unsubscribe = (f: () => void) => fArr = fArr.filter(v => v != f)
 
-export const publish = () => {
-    fArr.forEach(v => v())
-}
+export const publish = () => fArr.forEach(v => v())
+
 
 export const save = () =>
     localStorage.setItem('myCollect', JSON.stringify(store.myCollect))
