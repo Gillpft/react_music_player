@@ -8,5 +8,4 @@
 - typescript 
 - tslint
 - flex layout
-- global status management
 - functional programming
