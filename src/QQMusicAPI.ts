@@ -153,7 +153,7 @@ export const setMusicState = (s: { songid: number, playing: boolean, song: Song[
 import * as React from 'react'
 export const createLRC = (func: (p: { index: number, lrc: string[] }) => JSX.Element) => class Lrc extends React.Component<{}, { index: number, lrc: string[] }> {
 
-    cancel: boolean
+    n = -1
 
     onFrame() {
 
@@ -176,21 +176,18 @@ export const createLRC = (func: (p: { index: number, lrc: string[] }) => JSX.Ele
             lrc: arr.map(v => v.lrc)
         })
 
-        if (this.cancel == false) {
-            requestAnimationFrame(() => this.onFrame())
-        }
+
+        this.n = requestAnimationFrame(() => this.onFrame())
+
     }
 
     componentWillMount() {
-        this.cancel = false
         this.setState({ index: -1, lrc: ['', '', ''] }, () => this.onFrame())
-
     }
 
     componentWillUnmount() {
-        this.cancel = true
+        cancelAnimationFrame(this.n)
     }
-
 
     render() {
         return func(this.state)
