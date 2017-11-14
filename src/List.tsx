@@ -5,7 +5,7 @@ import { ListItem } from './ListItem'
 
 import { search, Song, setMusicState } from './QQMusicAPI'
 
-import { like, store, callAllFunc, pushFunc,removeFunc } from './gobal'
+import { like, store, publish, subscribe,unsubscribe } from './gobal'
 
 const S = {
   nowPlayID: -1, //当前播放的歌曲id
@@ -28,11 +28,11 @@ export class List extends React.Component<{ listClassName: string, list: Song[],
       nowPlayImgURL: store.nowPlayImgURL,
       isPlaying: store.isPlaying,
     })
-    pushFunc(this.f)
+    subscribe(this.f)
   }
 
   componentWillUnmount() {
-    removeFunc(this.f)
+    unsubscribe(this.f)
   }
 
   play(song: Song) {
@@ -48,7 +48,7 @@ export class List extends React.Component<{ listClassName: string, list: Song[],
       store.nowPlaySongName = song.songname
       store.nowPlaySong = song
       store.isCollected = store.myCollect.find(v=>v.songid==this.state.nowPlayID)!=null
-      callAllFunc()
+      publish()
     })
   }
 

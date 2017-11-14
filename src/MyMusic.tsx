@@ -10,7 +10,7 @@ import { ImgRotate } from './ImgRotate'
 import { Player } from './Player'
 
 import { search, Song, setMusicState } from './QQMusicAPI'
-import { like, store, callAllFunc, pushFunc, removeFunc, save } from './gobal'
+import { like, store, publish, subscribe, unsubscribe, save } from './gobal'
 
 const S = {
   textSearch: '',
@@ -35,11 +35,11 @@ export class MyMusic extends React.Component<{ myMusic: () => void, search: () =
       collectList: store.myCollect,
       nowPlayImgURL: store.nowPlayImgURL
     })
-    pushFunc(this.f)
+    subscribe(this.f)
   }
 
   componentWillUnmount() {
-    removeFunc(this.f)
+    unsubscribe(this.f)
   }
 
   collect(song: Song) {
@@ -50,7 +50,7 @@ export class MyMusic extends React.Component<{ myMusic: () => void, search: () =
     })
     store.isCollected = store.myCollect.find(v => v.songid == store.nowPlayID) != null
     save()
-    callAllFunc()
+    publish()
   }
 
   getcollect(song: Song) {
@@ -62,7 +62,7 @@ export class MyMusic extends React.Component<{ myMusic: () => void, search: () =
     this.setState({
       textSearch: store.textSearch
     })
-    callAllFunc()
+    publish()
   }
 
   render() {
