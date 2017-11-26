@@ -1,6 +1,6 @@
 # react music player
 ## Preview
-- [https://gillpft.github.io/music](https://gillpft.github.io/)
+- [https://gillpft.github.io/music](https://gillpft.github.io/music)
 
 ## Technology Stack
 - react 
