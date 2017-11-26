@@ -8,4 +8,3 @@
 - typescript 
 - tslint
 - flex layout
-- functional programming
