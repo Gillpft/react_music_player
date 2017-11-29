@@ -4,8 +4,12 @@
   flex-direction: column; 
   width: 100%;
   height: 100%;   
-  min-width: 900px;
-  min-height: 550px;
+}
+@media screen and (max-width: 500px) {
+  .Search {
+    width: 500px;
+    height: 400px;
+}
 }
 .SearchTabbar{
   width: 80%;
